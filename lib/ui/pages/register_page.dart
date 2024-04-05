@@ -170,6 +170,7 @@ class RegisterPage extends StatelessWidget {
       );
     }
 
-    return content();
+    return Scaffold(
+        backgroundColor: blueColor, body: SafeArea(child: content()));
   }
 }

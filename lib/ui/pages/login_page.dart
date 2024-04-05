@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pasya/theme.dart';
+import 'package:pasya/ui/pages/register_page.dart';
 import 'package:pasya/ui/widgets/form_input.dart';
 
 class LoginPage extends StatefulWidget {
