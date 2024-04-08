@@ -6,12 +6,15 @@ class Header extends StatelessWidget {
   final bool shop;
   final String text;
   final bool add;
-  const Header(
-      {super.key,
-      required this.text,
-      this.back = false,
-      this.shop = false,
-      this.add = false});
+  final String? imageUrl;
+  const Header({
+    super.key,
+    required this.text,
+    this.back = false,
+    this.shop = false,
+    this.add = false,
+    this.imageUrl,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -41,9 +44,23 @@ class Header extends StatelessWidget {
               ),
             ),
           ),
-          Text(
-            text,
-            style: whiteText.copyWith(fontSize: 24, fontWeight: bold),
+          Row(
+            children: [
+              Visibility(
+                visible: imageUrl != null,
+                child: Container(
+                  margin: const EdgeInsets.only(right: 12),
+                  child: CircleAvatar(
+                    backgroundImage: NetworkImage(imageUrl ?? ""),
+                    backgroundColor: greyColor,
+                  ),
+                ),
+              ),
+              Text(
+                text,
+                style: whiteText.copyWith(fontSize: 24, fontWeight: bold),
+              ),
+            ],
           ),
           Container(
             width: shop ? 40 : 0,
