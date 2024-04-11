@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pasya/theme.dart';
-import 'package:pasya/ui/pages/register_page.dart';
 import 'package:pasya/ui/widgets/form_input.dart';
 
 class LoginPage extends StatefulWidget {
@@ -123,7 +122,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const Spacer(),
                 TextButton(
-                    onPressed: () => Navigator.pushNamed(context, "/register"),
+                    onPressed: () => Navigator.pushNamed(context, "/main"),
                     style: TextButton.styleFrom(
                       backgroundColor: yellowColor,
                       shape: RoundedRectangleBorder(

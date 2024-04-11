@@ -6,13 +6,15 @@ class FormInput extends StatefulWidget {
     super.key,
     required this.textController,
     required this.hintText,
-    required this.validator,
+    this.validator = 'Please',
     required this.label,
     this.isPassword = false,
+    this.isSearch = false,
   });
 
   final TextEditingController textController;
   final bool isPassword;
+  final bool isSearch;
   final String hintText;
   final String validator;
   final String label;
@@ -23,6 +25,7 @@ class FormInput extends StatefulWidget {
 
 class _FormInputState extends State<FormInput> {
   bool isObscure = true;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,22 +33,23 @@ class _FormInputState extends State<FormInput> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              const SizedBox(
-                width: 10,
-              ),
-              Text(
-                widget.label,
-                style: blackText.copyWith(fontSize: 16, fontWeight: regular),
-              ),
-            ],
-          ),
+          if (!widget.isSearch)
+            Row(
+              children: [
+                const SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  widget.label,
+                  style: blackText.copyWith(fontSize: 16, fontWeight: regular),
+                ),
+              ],
+            ),
           const SizedBox(
             height: 10,
           ),
           TextFormField(
-            style: greyText.copyWith(fontSize: 12, fontWeight: regular),
+            style: blueText.copyWith(fontSize: 16, fontWeight: regular),
             obscureText: widget.isPassword ? isObscure : false,
             obscuringCharacter: '*',
             cursorColor: blueColor,
@@ -65,10 +69,15 @@ class _FormInputState extends State<FormInput> {
                 ),
               ),
               hintText: widget.hintText,
-              hintStyle: greyText.copyWith(
-                fontSize: 12,
-                fontWeight: regular,
-              ),
+              hintStyle: widget.isSearch
+                  ? blueText.copyWith(
+                      fontSize: 16,
+                      fontWeight: regular,
+                    )
+                  : greyText.copyWith(
+                      fontSize: 16,
+                      fontWeight: regular,
+                    ),
               suffixIcon: Visibility(
                 visible: widget.isPassword,
                 child: IconButton(
@@ -85,10 +94,13 @@ class _FormInputState extends State<FormInput> {
                   ),
                 ),
               ),
+              prefixIcon:
+                  widget.isSearch ? const Icon(Icons.search_rounded) : null,
+              prefixIconColor: blueColor,
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(32),
                 borderSide: BorderSide(
-                  color: greyColor,
+                  color: blueColor.withOpacity(0.5),
                   width: 1,
                 ),
               ),
