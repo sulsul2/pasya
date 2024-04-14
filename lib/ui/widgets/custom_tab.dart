@@ -7,11 +7,13 @@ class CustomTab extends StatelessWidget {
     required this.text,
     required this.color,
     required this.padding,
+    this.icon,
   });
 
   final String text;
   final Color color;
   final double padding;
+  final Icon? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +21,21 @@ class CustomTab extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: padding, vertical: 8),
       decoration: BoxDecoration(
           color: color, borderRadius: BorderRadius.circular(20.0)),
-      child: Text(
-        text,
-        style: color == blueColor
-            ? whiteText.copyWith(fontWeight: semibold)
-            : blackText.copyWith(fontWeight: semibold),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          if (icon != null) icon!,
+          if (icon != null)
+            const SizedBox(
+              width: 4,
+            ),
+          Text(
+            text,
+            style: color == blueColor
+                ? whiteText.copyWith(fontWeight: semibold)
+                : blackText.copyWith(fontWeight: semibold),
+          ),
+        ],
       ),
     );
   }

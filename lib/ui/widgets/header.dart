@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:pasya/theme.dart';
+import 'package:pasya/ui/pages/cart_page.dart';
 
 class Header extends StatelessWidget {
   final bool back;
@@ -62,18 +64,24 @@ class Header extends StatelessWidget {
               ),
             ],
           ),
-          Container(
-            width: shop ? 40 : 0,
-            height: shop ? 40 : 0,
-            decoration: BoxDecoration(
-              color: yellowColor,
-              borderRadius: BorderRadius.circular(20.0),
+          GestureDetector(
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const CartPage()),
             ),
-            child: Center(
-              child: Icon(
-                Icons.shopping_cart_rounded,
-                color: blueColor,
-                size: 24.0,
+            child: Container(
+              width: shop ? 40 : 0,
+              height: shop ? 40 : 0,
+              decoration: BoxDecoration(
+                color: yellowColor,
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: Center(
+                child: Icon(
+                  Icons.shopping_cart_rounded,
+                  color: blueColor,
+                  size: 24.0,
+                ),
               ),
             ),
           ),
