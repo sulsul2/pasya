@@ -10,7 +10,8 @@ class AddressCard extends StatelessWidget {
       required this.number,
       required this.address,
       required this.icon,
-      this.check = false});
+      this.check = false,
+      this.opacity = false});
 
   final String title;
   final String name;
@@ -18,6 +19,7 @@ class AddressCard extends StatelessWidget {
   final String address;
   final bool icon;
   final bool check;
+  final bool opacity;
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +64,7 @@ class AddressCard extends StatelessWidget {
                   width: icon ? 28 : 0,
                   height: 28,
                   decoration: BoxDecoration(
-                    color: yellowColor,
+                    color: opacity ? yellowColor.withOpacity(0.4) : yellowColor,
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: Center(

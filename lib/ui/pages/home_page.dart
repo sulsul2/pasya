@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pasya/theme.dart';
 import 'package:pasya/ui/pages/customer_page_one.dart';
+import 'package:pasya/ui/pages/customer_page_second.dart';
 import 'package:pasya/ui/widgets/custom_dropdown.dart';
 import 'package:pasya/ui/widgets/form_input.dart';
 import 'package:pasya/ui/widgets/header.dart';
@@ -89,7 +90,11 @@ class _HomePageState extends State<HomePage> {
                       height: 148,
                       name: 'Pasar A',
                       photoUrl: 'assets/pasar_ex.png',
-                      onPressed: () {},
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CustomerPageSecond()),
+                      ),
                     ),
                     const SizedBox(
                       width: 8,
@@ -99,7 +104,11 @@ class _HomePageState extends State<HomePage> {
                       height: 148,
                       name: 'Pasar A',
                       photoUrl: 'assets/pasar_ex.png',
-                      onPressed: () {},
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CustomerPageSecond()),
+                      ),
                     ),
                     const SizedBox(
                       width: 8,
@@ -109,7 +118,11 @@ class _HomePageState extends State<HomePage> {
                       height: 148,
                       name: 'Pasar A',
                       photoUrl: 'assets/pasar_ex.png',
-                      onPressed: () {},
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CustomerPageSecond()),
+                      ),
                     ),
                     const SizedBox(
                       width: 8,
@@ -119,7 +132,11 @@ class _HomePageState extends State<HomePage> {
                       height: 148,
                       name: 'Pasar A',
                       photoUrl: 'assets/pasar_ex.png',
-                      onPressed: () {},
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CustomerPageSecond()),
+                      ),
                     ),
                     const SizedBox(
                       width: 20,
@@ -161,7 +178,11 @@ class _HomePageState extends State<HomePage> {
                       height: 148,
                       name: 'Peternakan A',
                       photoUrl: 'assets/chicken_farm.png',
-                      onPressed: () {},
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CustomerPageSecond()),
+                      ),
                     ),
                     const SizedBox(
                       width: 8,
@@ -171,7 +192,11 @@ class _HomePageState extends State<HomePage> {
                       height: 148,
                       name: 'Peternakan A',
                       photoUrl: 'assets/chicken_farm.png',
-                      onPressed: () {},
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CustomerPageSecond()),
+                      ),
                     ),
                     const SizedBox(
                       width: 8,
@@ -181,7 +206,11 @@ class _HomePageState extends State<HomePage> {
                       height: 148,
                       name: 'Peternakan A',
                       photoUrl: 'assets/chicken_farm.png',
-                      onPressed: () {},
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CustomerPageSecond()),
+                      ),
                     ),
                     const SizedBox(
                       width: 8,
@@ -191,7 +220,11 @@ class _HomePageState extends State<HomePage> {
                       height: 148,
                       name: 'Peternakan A',
                       photoUrl: 'assets/chicken_farm.png',
-                      onPressed: () {},
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CustomerPageSecond()),
+                      ),
                     ),
                     const SizedBox(
                       width: 20,
@@ -233,7 +266,11 @@ class _HomePageState extends State<HomePage> {
                       height: 148,
                       name: 'Perikanan A',
                       photoUrl: 'assets/chicken_farm.png',
-                      onPressed: () {},
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CustomerPageSecond()),
+                      ),
                     ),
                     const SizedBox(
                       width: 8,
@@ -243,7 +280,11 @@ class _HomePageState extends State<HomePage> {
                       height: 148,
                       name: 'Perikanan A',
                       photoUrl: 'assets/chicken_farm.png',
-                      onPressed: () {},
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CustomerPageSecond()),
+                      ),
                     ),
                     const SizedBox(
                       width: 8,
@@ -253,7 +294,11 @@ class _HomePageState extends State<HomePage> {
                       height: 148,
                       name: 'Perikanan A',
                       photoUrl: 'assets/chicken_farm.png',
-                      onPressed: () {},
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CustomerPageSecond()),
+                      ),
                     ),
                     const SizedBox(
                       width: 8,
@@ -263,7 +308,11 @@ class _HomePageState extends State<HomePage> {
                       height: 148,
                       name: 'Perikanan A',
                       photoUrl: 'assets/chicken_farm.png',
-                      onPressed: () {},
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CustomerPageSecond()),
+                      ),
                     ),
                     const SizedBox(
                       width: 20,
@@ -279,11 +328,11 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: whiteColor,
         body: Stack(
           children: [
+            content(),
             const Header(
               text: 'Beranda',
               shop: true,
             ),
-            content()
           ],
         ));
   }

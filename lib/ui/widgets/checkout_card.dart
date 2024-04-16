@@ -7,12 +7,14 @@ class CheckoutCard extends StatelessWidget {
       required this.photoUrl,
       required this.name,
       required this.price,
-      required this.count});
+      required this.count,
+      this.opacity = false});
 
   final String photoUrl;
   final String name;
   final int price;
   final int count;
+  final bool opacity;
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +65,7 @@ class CheckoutCard extends StatelessWidget {
                 width: 184,
                 height: 32,
                 decoration: BoxDecoration(
-                    color: whiteColor,
+                    color: opacity ? whiteColor.withOpacity(0.5) : whiteColor,
                     borderRadius: const BorderRadius.all(Radius.circular(16)),
                     border: Border.all(
                         color: blueColor.withOpacity(0.5), width: 1)),
@@ -74,12 +76,14 @@ class CheckoutCard extends StatelessWidget {
                       width: 32,
                       height: double.infinity,
                       decoration: BoxDecoration(
-                        color: yellowColor,
+                        color: opacity
+                            ? yellowColor.withOpacity(0.4)
+                            : yellowColor,
                         borderRadius: BorderRadius.circular(16),
                       ),
                       child: Center(
                         child: Icon(
-                          Icons.add,
+                          Icons.remove,
                           color: blueColor,
                           size: 16,
                         ),
@@ -93,7 +97,9 @@ class CheckoutCard extends StatelessWidget {
                       width: 32,
                       height: double.infinity,
                       decoration: BoxDecoration(
-                        color: yellowColor,
+                        color: opacity
+                            ? yellowColor.withOpacity(0.4)
+                            : yellowColor,
                         borderRadius: BorderRadius.circular(16),
                       ),
                       child: Center(

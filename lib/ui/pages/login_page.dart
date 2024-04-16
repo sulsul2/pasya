@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:pasya/theme.dart';
 import 'package:pasya/ui/widgets/form_input.dart';
 
@@ -14,6 +15,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     TextEditingController usernameController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
+    bool rememberMe = false;
     Widget content() {
       return Stack(
         children: [
@@ -30,27 +32,31 @@ class _LoginPageState extends State<LoginPage> {
           ),
           Stack(
             children: [
-              Container(
-                decoration: BoxDecoration(
-                    color: greyColor,
-                    borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(36),
-                        topRight: Radius.circular(36))),
-                margin: const EdgeInsets.only(top: 200),
-                padding: const EdgeInsets.only(top: 23, right: 60),
-                width: double.infinity,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      'Register',
-                      style: blackText.copyWith(
-                          fontWeight: FontWeight.normal, fontSize: 20),
-                    )
-                  ],
+              GestureDetector(
+                onTap: () => Navigator.pushNamed(context, "/register"),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: greyColor,
+                      borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(36),
+                          topRight: Radius.circular(36))),
+                  margin: const EdgeInsets.only(top: 200),
+                  padding: const EdgeInsets.only(top: 23, right: 60),
+                  width: double.infinity,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        'Register',
+                        style: blackText.copyWith(
+                            fontWeight: FontWeight.normal, fontSize: 20),
+                      )
+                    ],
+                  ),
                 ),
               ),
-              Container(
+              AnimatedContainer(
+                duration: const Duration(milliseconds: 300),
                 decoration: BoxDecoration(
                   color: yellowColor,
                   borderRadius: const BorderRadius.only(
@@ -83,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
           Container(
             padding:
-                const EdgeInsets.only(top: 40, left: 20, right: 20, bottom: 30),
+                const EdgeInsets.only(top: 40, left: 20, right: 20, bottom: 10),
             margin: const EdgeInsets.only(top: 270),
             width: double.infinity,
             decoration: BoxDecoration(
@@ -119,6 +125,42 @@ class _LoginPageState extends State<LoginPage> {
                   validator: 'Please input password',
                   label: 'Password',
                   isPassword: true,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Row(
+                      children: [
+                        Checkbox(
+                          value: rememberMe,
+                          onChanged: (newValue) {
+                            setState(() {
+                              rememberMe = newValue!;
+                            });
+                          },
+                          shape: const CircleBorder(),
+                          activeColor: yellowColor,
+                        ),
+                        Text(
+                          'Ingat saya',
+                          style: blueText.copyWith(
+                              fontSize: 16, fontWeight: semibold),
+                        )
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: Text(
+                        'Lupa Password',
+                        style: blueText.copyWith(
+                            fontSize: 16, fontWeight: semibold),
+                      ),
+                    )
+                  ],
                 ),
                 const Spacer(),
                 TextButton(

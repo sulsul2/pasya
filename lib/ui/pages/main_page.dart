@@ -125,8 +125,17 @@ class MainPage extends StatelessWidget {
     }
 
     return Scaffold(
-      bottomNavigationBar: customBottonNavigation(),
-      body: content(),
+      // bottomNavigationBar: customBottonNavigation(),
+      body: Stack(
+        children: [
+          content(),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [customBottonNavigation()],
+          )
+        ],
+      ),
     );
   }
 }

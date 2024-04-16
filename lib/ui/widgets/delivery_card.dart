@@ -3,11 +3,20 @@ import 'package:pasya/theme.dart';
 
 class DeliveryCard extends StatelessWidget {
   const DeliveryCard(
-      {super.key, required this.name, required this.price, required this.time});
+      {super.key,
+      required this.name,
+      required this.price,
+      required this.time,
+      required this.icon,
+      this.check = false,
+      this.opacity = false});
 
   final String name;
   final String price;
   final int time;
+  final bool icon;
+  final bool check;
+  final bool opacity;
 
   @override
   Widget build(BuildContext context) {
@@ -36,17 +45,19 @@ class DeliveryCard extends StatelessWidget {
             ],
           ),
           Container(
-            width: 28,
+            width: icon ? 28 : 0,
             height: 28,
             decoration: BoxDecoration(
-              color: yellowColor,
+              color: opacity && !check
+                  ? yellowColor.withOpacity(0.4)
+                  : yellowColor,
               borderRadius: BorderRadius.circular(20.0),
             ),
             child: Center(
               child: Icon(
-                Icons.arrow_forward_ios_outlined,
+                check ? Icons.check : Icons.arrow_forward_ios_outlined,
                 color: blueColor,
-                size: 20.0,
+                size: icon ? 20.0 : 0,
               ),
             ),
           ),

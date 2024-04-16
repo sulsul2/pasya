@@ -101,7 +101,7 @@ class CartCard extends StatelessWidget {
                             ),
                             child: Center(
                               child: Icon(
-                                Icons.add,
+                                Icons.remove,
                                 color: blueColor,
                                 size: 16,
                               ),

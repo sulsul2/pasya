@@ -13,7 +13,7 @@ class PaymentPage extends StatelessWidget {
     Widget content() {
       return Container(
         margin: const EdgeInsets.only(top: 120),
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 48),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -110,26 +110,6 @@ class PaymentPage extends StatelessWidget {
             const SizedBox(
               height: 16,
             ),
-            TextButton(
-                onPressed: () {},
-                style: TextButton.styleFrom(
-                  backgroundColor: yellowColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-                child: Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text('Bayar',
-                          style: blackText.copyWith(
-                              fontSize: 16, fontWeight: semibold)),
-                    ],
-                  ),
-                )),
           ],
         ),
       );
@@ -144,6 +124,36 @@ class PaymentPage extends StatelessWidget {
             back: true,
           ),
           content(),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                child: TextButton(
+                    onPressed: () {},
+                    style: TextButton.styleFrom(
+                      backgroundColor: yellowColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    child: Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Bayar',
+                              style: blackText.copyWith(
+                                  fontSize: 16, fontWeight: semibold)),
+                        ],
+                      ),
+                    )),
+              ),
+            ],
+          )
         ],
       ),
     );

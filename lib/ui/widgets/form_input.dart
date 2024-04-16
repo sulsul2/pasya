@@ -52,7 +52,7 @@ class _FormInputState extends State<FormInput> {
             style: blueText.copyWith(fontSize: 16, fontWeight: regular),
             obscureText: widget.isPassword ? isObscure : false,
             obscuringCharacter: '*',
-            cursorColor: blueColor,
+            cursorColor: blueColor.withOpacity(0.5),
             validator: (e) {
               if (e!.isEmpty) {
                 return widget.validator;
@@ -64,7 +64,7 @@ class _FormInputState extends State<FormInput> {
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(32),
                 borderSide: BorderSide(
-                  color: blueColor,
+                  color: blueColor.withOpacity(0.5),
                   width: 1,
                 ),
               ),
@@ -96,18 +96,18 @@ class _FormInputState extends State<FormInput> {
               ),
               prefixIcon:
                   widget.isSearch ? const Icon(Icons.search_rounded) : null,
-              prefixIconColor: blueColor,
+              prefixIconColor: blueColor.withOpacity(0.5),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(32),
                 borderSide: BorderSide(
-                  color: blueColor.withOpacity(0.5),
+                  color: blueColor.withOpacity(0.5).withOpacity(0.5),
                   width: 1,
                 ),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(32),
                 borderSide: BorderSide(
-                  color: blueColor,
+                  color: blueColor.withOpacity(0.5),
                   width: 1,
                 ),
               ),

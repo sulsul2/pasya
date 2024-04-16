@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pasya/theme.dart';
+import 'package:pasya/ui/pages/add_product_page.dart';
 import 'package:pasya/ui/pages/cart_page.dart';
 
 class Header extends StatelessWidget {
@@ -42,7 +43,7 @@ class Header extends StatelessWidget {
               child: Icon(
                 Icons.arrow_back_ios_outlined,
                 color: blueColor,
-                size: 24.0,
+                size: back ? 24.0 : 0,
               ),
             ),
           ),
@@ -67,20 +68,22 @@ class Header extends StatelessWidget {
           GestureDetector(
             onTap: () => Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const CartPage()),
+              MaterialPageRoute(
+                  builder: (context) =>
+                      shop ? const CartPage() : const AddProductPage()),
             ),
             child: Container(
-              width: shop ? 40 : 0,
-              height: shop ? 40 : 0,
+              width: shop || add ? 40 : 0,
+              height: shop || add ? 40 : 0,
               decoration: BoxDecoration(
                 color: yellowColor,
                 borderRadius: BorderRadius.circular(20.0),
               ),
               child: Center(
                 child: Icon(
-                  Icons.shopping_cart_rounded,
+                  shop ? Icons.shopping_cart_rounded : Icons.add,
                   color: blueColor,
-                  size: 24.0,
+                  size: shop || add ? 24.0 : 0,
                 ),
               ),
             ),
