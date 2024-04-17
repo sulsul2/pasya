@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:pasya/theme.dart';
-import 'package:pasya/ui/pages/chat_page.dart';
-import 'package:pasya/ui/pages/chat_room_page.dart';
+import 'package:pasya/ui/chat/chat_page.dart';
+import 'package:pasya/ui/chat/chat_room_page.dart';
 
 class ChatCard extends StatelessWidget {
   const ChatCard({super.key, required this.chat});

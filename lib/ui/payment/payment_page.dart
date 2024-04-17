@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:pasya/theme.dart';
 import 'package:pasya/ui/widgets/condition_tab.dart';
 import 'package:pasya/ui/widgets/header.dart';
-import 'package:pasya/ui/widgets/payment_card.dart';
+import 'package:pasya/ui/payment/presentation/payment_card.dart';
 
 class PaymentPage extends StatelessWidget {
   const PaymentPage({super.key});

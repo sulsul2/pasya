@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:pasya/ui/pages/chat_page.dart';
-import 'package:pasya/ui/pages/order_page.dart';
-import 'package:pasya/ui/pages/profile_page.dart';
+import 'package:pasya/ui/chat/chat_page.dart';
+import 'package:pasya/ui/order/order_page.dart';
+import 'package:pasya/ui/profile/profile_page.dart';
 import 'package:provider/provider.dart';
 import 'package:pasya/providers/page_provider.dart';
 import 'package:pasya/theme.dart';
-import 'package:pasya/ui/pages/home_page.dart';
+import 'package:pasya/ui/home/home_page.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});

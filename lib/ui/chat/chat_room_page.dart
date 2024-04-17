@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:pasya/theme.dart';
 
-import '../widgets/chat_bubble.dart';
+import 'presentation/chat_bubble.dart';
 import '../widgets/header.dart';
 
 class ChatBubbleModel {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pasya/theme.dart';
 import 'package:pasya/ui/widgets/custom_tab.dart';
 import 'package:pasya/ui/widgets/header.dart';
-import 'package:pasya/ui/widgets/order_card.dart';
+import 'package:pasya/ui/order/presentation/order_card.dart';
 
 class OrderPage extends StatelessWidget {
   const OrderPage({super.key});

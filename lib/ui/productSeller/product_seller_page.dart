@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pasya/theme.dart';
-import 'package:pasya/ui/pages/customer_page_second.dart';
+import 'package:pasya/ui/detailMarket/detail_market_page.dart';
 import 'package:pasya/ui/widgets/header.dart';
 import 'package:pasya/ui/widgets/market_card.dart';
 
@@ -33,7 +33,7 @@ class ProductSellerPage extends StatelessWidget {
                 onPressed: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const CustomerPageSecond()),
+                      builder: (context) => const DetailMarketPage()),
                 ),
               );
             },

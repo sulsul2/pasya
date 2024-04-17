@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pasya/theme.dart';
-import 'package:pasya/ui/pages/change_address_page.dart';
+import 'package:pasya/ui/changeAddress/change_address_page.dart';
 
 class AddressCard extends StatelessWidget {
   const AddressCard(

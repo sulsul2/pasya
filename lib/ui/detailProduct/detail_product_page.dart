@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pasya/theme.dart';
-import 'package:pasya/ui/pages/chat_page.dart';
-import 'package:pasya/ui/pages/order_page.dart';
+import 'package:pasya/ui/chat/chat_page.dart';
+import 'package:pasya/ui/order/order_page.dart';
 import 'package:pasya/ui/widgets/condition_tab.dart';
 import 'package:pasya/ui/widgets/custom_tab.dart';
 import 'package:pasya/ui/widgets/header.dart';
-import 'package:pasya/ui/widgets/review_card.dart';
+import 'package:pasya/ui/detailProduct/presentation/review_card.dart';
 
 class DetailProductPage extends StatefulWidget {
   const DetailProductPage({super.key});

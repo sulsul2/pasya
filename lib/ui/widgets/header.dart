@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pasya/theme.dart';
-import 'package:pasya/ui/pages/add_product_page.dart';
-import 'package:pasya/ui/pages/cart_page.dart';
+import 'package:pasya/ui/addProduct/add_product_page.dart';
+import 'package:pasya/ui/cart/cart_page.dart';
 
 class Header extends StatelessWidget {
   final bool back;

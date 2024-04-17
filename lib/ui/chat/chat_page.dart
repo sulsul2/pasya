@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pasya/ui/widgets/header.dart';
 
-import '../widgets/chat_card.dart';
+import 'presentation/chat_card.dart';
 
 class ChatModel {
   const ChatModel({

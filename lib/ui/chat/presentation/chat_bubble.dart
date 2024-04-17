@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 
-import '../../theme.dart';
-import '../pages/chat_room_page.dart';
+import '../../../theme.dart';
+import '../chat_room_page.dart';
 
 class ChatBubble extends StatelessWidget {
   const ChatBubble({

@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pasya/theme.dart';
-import 'package:pasya/ui/pages/payment_page.dart';
+import 'package:pasya/ui/payment/payment_page.dart';
 import 'package:pasya/ui/widgets/address_card.dart';
-import 'package:pasya/ui/widgets/checkout_card.dart';
+import 'package:pasya/ui/checkout/presentation/checkout_card.dart';
 import 'package:pasya/ui/widgets/condition_tab.dart';
-import 'package:pasya/ui/widgets/delivery_card.dart';
+import 'package:pasya/ui/checkout/presentation/delivery_card.dart';
 import 'package:pasya/ui/widgets/header.dart';
 
 class CheckoutPage extends StatefulWidget {

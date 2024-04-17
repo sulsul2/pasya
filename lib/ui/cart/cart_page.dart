@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pasya/theme.dart';
-import 'package:pasya/ui/pages/checkout_page.dart';
-import 'package:pasya/ui/widgets/cart_card.dart';
+import 'package:pasya/ui/cart/presentation/cart_card.dart';
+import 'package:pasya/ui/checkout/checkout_page.dart';
 import 'package:pasya/ui/widgets/header.dart';
 
 class CartPage extends StatelessWidget {

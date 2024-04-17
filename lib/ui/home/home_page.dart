@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pasya/theme.dart';
-import 'package:pasya/ui/pages/customer_page_one.dart';
-import 'package:pasya/ui/pages/customer_page_second.dart';
-import 'package:pasya/ui/widgets/custom_dropdown.dart';
+import 'package:pasya/ui/customerMarket/customer_market_page.dart';
+import 'package:pasya/ui/detailMarket/detail_market_page.dart';
+import 'package:pasya/ui/home/presentation/custom_dropdown.dart';
 import 'package:pasya/ui/widgets/form_input.dart';
 import 'package:pasya/ui/widgets/header.dart';
 import 'package:pasya/ui/widgets/market_card.dart';
@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        const CustomerPageOne()),
+                                        const CustomerMarketPage()),
                               ),
                               child: Text(
                                 'Detail',
@@ -93,7 +93,7 @@ class _HomePageState extends State<HomePage> {
                       onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const CustomerPageSecond()),
+                            builder: (context) => const DetailMarketPage()),
                       ),
                     ),
                     const SizedBox(
@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage> {
                       onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const CustomerPageSecond()),
+                            builder: (context) => const DetailMarketPage()),
                       ),
                     ),
                     const SizedBox(
@@ -121,7 +121,7 @@ class _HomePageState extends State<HomePage> {
                       onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const CustomerPageSecond()),
+                            builder: (context) => const DetailMarketPage()),
                       ),
                     ),
                     const SizedBox(
@@ -135,7 +135,7 @@ class _HomePageState extends State<HomePage> {
                       onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const CustomerPageSecond()),
+                            builder: (context) => const DetailMarketPage()),
                       ),
                     ),
                     const SizedBox(
@@ -181,7 +181,7 @@ class _HomePageState extends State<HomePage> {
                       onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const CustomerPageSecond()),
+                            builder: (context) => const DetailMarketPage()),
                       ),
                     ),
                     const SizedBox(
@@ -195,7 +195,7 @@ class _HomePageState extends State<HomePage> {
                       onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const CustomerPageSecond()),
+                            builder: (context) => const DetailMarketPage()),
                       ),
                     ),
                     const SizedBox(
@@ -209,7 +209,7 @@ class _HomePageState extends State<HomePage> {
                       onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const CustomerPageSecond()),
+                            builder: (context) => const DetailMarketPage()),
                       ),
                     ),
                     const SizedBox(
@@ -223,7 +223,7 @@ class _HomePageState extends State<HomePage> {
                       onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const CustomerPageSecond()),
+                            builder: (context) => const DetailMarketPage()),
                       ),
                     ),
                     const SizedBox(
@@ -269,7 +269,7 @@ class _HomePageState extends State<HomePage> {
                       onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const CustomerPageSecond()),
+                            builder: (context) => const DetailMarketPage()),
                       ),
                     ),
                     const SizedBox(
@@ -283,7 +283,7 @@ class _HomePageState extends State<HomePage> {
                       onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const CustomerPageSecond()),
+                            builder: (context) => const DetailMarketPage()),
                       ),
                     ),
                     const SizedBox(
@@ -297,7 +297,7 @@ class _HomePageState extends State<HomePage> {
                       onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const CustomerPageSecond()),
+                            builder: (context) => const DetailMarketPage()),
                       ),
                     ),
                     const SizedBox(
@@ -311,7 +311,7 @@ class _HomePageState extends State<HomePage> {
                       onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const CustomerPageSecond()),
+                            builder: (context) => const DetailMarketPage()),
                       ),
                     ),
                     const SizedBox(

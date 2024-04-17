@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:pasya/theme.dart';
-import 'package:pasya/ui/pages/detail_shop_page.dart';
+import 'package:pasya/ui/detailShop/detail_shop_page.dart';
 import 'package:pasya/ui/widgets/custom_tab.dart';
 import 'package:pasya/ui/widgets/form_input.dart';
 import 'package:pasya/ui/widgets/header.dart';
 import 'package:pasya/ui/widgets/market_card.dart';
 
-class CustomerPageSecond extends StatelessWidget {
-  const CustomerPageSecond({super.key});
+class DetailMarketPage extends StatelessWidget {
+  const DetailMarketPage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:pasya/theme.dart';
 // import 'package:pasya/ui/pages/customer_page_second.dart';
-import 'package:pasya/ui/pages/detail_product_page.dart';
+import 'package:pasya/ui/detailProduct/detail_product_page.dart';
 import 'package:pasya/ui/widgets/header.dart';
 import 'package:pasya/ui/widgets/market_card.dart';
 // import 'package:scroll_page_view/pager/page_controller.dart';
