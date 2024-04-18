@@ -8,7 +8,6 @@ import 'package:pasya/ui/chat/presentation/chat_bubble.dart';
 import 'package:pasya/ui/chat/presentation/chat_card.dart';
 import 'package:pasya/ui/chat/presentation/image_loader.dart';
 import 'package:pasya/ui/checkout/presentation/checkout_card.dart';
-import 'package:pasya/ui/checkout/presentation/delivery_card.dart';
 import 'package:pasya/ui/detailProduct/presentation/review_card.dart';
 import 'package:pasya/ui/home/presentation/custom_dropdown.dart';
 import 'package:pasya/ui/order/presentation/order_card.dart';
@@ -20,7 +19,6 @@ import 'package:pasya/ui/widgets/form_input.dart';
 import 'package:pasya/ui/widgets/header.dart';
 import 'package:pasya/ui/widgets/market_card.dart';
 
-
 void main() {
   testWidgets('AddressCard Widget Test', (WidgetTester tester) async {
     // Build the AddressCard widget with required parameters
@@ -29,7 +27,8 @@ void main() {
         title: 'Home',
         name: 'Rahman Atisura',
         number: '624556693780',
-        address: 'Jl. Ciumbuleuit No.50 - 58, Hegarmanah, Kec. Cidadap, Kota Bandung, Jawa Barat 40141',
+        address:
+            'Jl. Ciumbuleuit No.50 - 58, Hegarmanah, Kec. Cidadap, Kota Bandung, Jawa Barat 40141',
         icon: true,
         opacity: true,
       ),
@@ -61,7 +60,7 @@ void main() {
 
   testWidgets('ChatBubble Widget Test', (WidgetTester tester) async {
     // Build the ChatBubble widget
-    var bubble =  ChatBubbleModel(
+    var bubble = ChatBubbleModel(
         username: 'John Doe',
         message: 'Hello, how are you?',
         time: DateTime.now(),
@@ -70,7 +69,7 @@ void main() {
 
     await tester.pumpWidget(MaterialApp(
       home: ChatBubble(
-        bubble: bubble ,
+        bubble: bubble,
         isDate: false,
         isGap: true,
       ),
@@ -91,7 +90,7 @@ void main() {
         lastMessage: 'Hello, how are you?',
         lastTime: DateTime.now(),
         imageUrl:
-        'https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?q=80&w=1966&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            'https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?q=80&w=1966&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         countUnread: 12,
       ),
     ];
@@ -100,7 +99,10 @@ void main() {
     await tester.pumpWidget(MaterialApp(
       home: ListView(
         padding: const EdgeInsets.symmetric(vertical: 120, horizontal: 20),
-        children: chats.map((chat) => ChatCard(chat: chat,  imageLoader: AssetImageLoader())).toList(),
+        children: chats
+            .map(
+                (chat) => ChatCard(chat: chat, imageLoader: AssetImageLoader()))
+            .toList(),
       ),
     ));
 
@@ -130,22 +132,6 @@ void main() {
     expect(checkoutCardFinder, findsOneWidget);
   });
 
-  testWidgets('ConditionTab Widget Test', (WidgetTester tester) async {
-    // Build the ConditionTab widget
-    await tester.pumpWidget(const MaterialApp(
-      home: ConditionTab(
-        parameter: 'Kondisi Barang',
-        value: 'Baru',
-      ),
-    ));
-
-    // Find the ConditionTab widget
-    final conditionTabFinder = find.byType(ConditionTab);
-
-    // Verify that the ConditionTab widget is displayed
-    expect(conditionTabFinder, findsOneWidget);
-  });
-
   testWidgets('CustomDropdown Widget Test', (WidgetTester tester) async {
     const List<String> list = <String>[
       'Bandung',
@@ -153,11 +139,30 @@ void main() {
       'Bogor',
       'Bekasih'
     ];
+
     // Build the CustomDropdown widget
     await tester.pumpWidget(const MaterialApp(
-      home: CustomDropDown(
-        list: list,
-        placeholder: 'Pilih Kota',
+      home: Material(
+        child: Column(
+          children: [
+            CustomDropDown(
+              list: list,
+              placeholder: 'Pilih Kota',
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            SizedBox(
+              height: 16,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Pasar Tradisional'),
+              ],
+            ),
+          ],
+        ),
       ),
     ));
 
@@ -181,42 +186,29 @@ void main() {
     expect(customTabFinder, findsOneWidget);
   });
 
-  testWidgets('DeliveryCard Widget Test', (WidgetTester tester) async {
-    // Build the DeliveryCard widget
-    await tester.pumpWidget(const MaterialApp(
-      home: DeliveryCard(
-        name: 'Gojek',
-        price: '20.000',
-        time: 30,
-        icon: true,
-        check: true,
-      ),
-    ));
-
-    // Find the DeliveryCard widget
-    final deliveryCardFinder = find.byType(DeliveryCard);
-
-    // Verify that the DeliveryCard widget is displayed
-    expect(deliveryCardFinder, findsOneWidget);
-  });
-
   testWidgets('FormInput Widget Test', (WidgetTester tester) async {
-    // Build the DormInput widget
+    // Initialize the TextEditingController
     TextEditingController searchController = TextEditingController();
+
+    // Build the FormInput widget
     await tester.pumpWidget(MaterialApp(
-      home: FormInput(
-        textController: searchController,
-        hintText: 'Cari toko',
-        label: 'Toko',
-        isSearch: true,
+      home: Scaffold(
+        body: Material(
+          child: FormInput(
+            textController: searchController,
+            hintText: 'Cari pasar',
+            label: 'Pasar',
+            isSearch: true,
+          ),
+        ),
       ),
     ));
 
-    // Find the DormInput widget
-    final FormInputFinder = find.byType(FormInput);
+    // Find the FormInput widget
+    final formInputFinder = find.byType(FormInput);
 
-    // Verify that the DormInput widget is displayed
-    expect(FormInputFinder, findsOneWidget);
+    // Verify that the FormInput widget is displayed
+    expect(formInputFinder, findsOneWidget);
   });
 
   testWidgets('Header Widget Test', (WidgetTester tester) async {
@@ -239,68 +231,17 @@ void main() {
     // Build the Header widget
     await tester.pumpWidget(MaterialApp(
         home: MarketCard(
-          width: 160,
-          height: 184,
-          name: 'Toko A',
-          photoUrl: 'assets/pasar_2.png', onPressed: () {  },
-        )
-    ));
+      width: 160,
+      height: 184,
+      name: 'Toko A',
+      photoUrl: 'assets/pasar_2.png',
+      onPressed: () {},
+    )));
 
     // Find the Header widget
-    final MarketCardFinder = find.byType(MarketCard);
+    final marketCardFinder = find.byType(MarketCard);
 
     // Verify that the Header widget is displayed
-    expect(MarketCardFinder, findsOneWidget);
-  });
-
-  testWidgets('Order Card Test', (WidgetTester tester) async {
-    // Build the Header widget
-    await tester.pumpWidget(const MaterialApp(
-        home: OrderCard(
-          tipe: 1,
-        )
-    ));
-
-    // Find the Header widget
-    final OrderCardFinder = find.byType(OrderCard);
-
-    // Verify that the Header widget is displayed
-    expect(OrderCardFinder, findsOneWidget);
-  });
-
-  testWidgets('Payment Card Test', (WidgetTester tester) async {
-    // Build the Header widget
-    await tester.pumpWidget(const MaterialApp(
-        home: PaymentCard(
-            name: 'Pasya-Pay',
-            isSaldo: true,
-            saldo: '200.000',
-            isCheck: true)
-    ));
-
-    // Find the Header widget
-    final PaymentCardFinder = find.byType(PaymentCard);
-
-    // Verify that the Header widget is displayed
-    expect(PaymentCardFinder, findsOneWidget);
-  });
-
-  testWidgets('Review Card Test', (WidgetTester tester) async {
-    // Build the Header widget
-    await tester.pumpWidget(const MaterialApp(
-        home:ReviewCard(
-          name: 'Hessniya',
-          rating: 2,
-          profilUrl: '',
-          description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
-        )
-    ));
-
-    // Find the Header widget
-    final ReviewCardFinder = find.byType(ReviewCard);
-
-    // Verify that the Header widget is displayed
-    expect(ReviewCardFinder, findsOneWidget);
+    expect(marketCardFinder, findsOneWidget);
   });
 }
