@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pasya/ui/chat/presentation/image_loader.dart';
 import 'package:pasya/ui/widgets/header.dart';
 
 import 'presentation/chat_card.dart';
@@ -100,7 +101,7 @@ class ChatPage extends StatelessWidget {
     Widget chatList() {
       return ListView(
         padding: const EdgeInsets.symmetric(vertical: 120, horizontal: 20),
-        children: chats.map((chat) => ChatCard(chat: chat)).toList(),
+        children: chats.map((chat) => ChatCard(chat: chat, imageLoader: AssetImageLoader(),)).toList(),
       );
     }
 
