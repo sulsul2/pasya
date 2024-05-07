@@ -1,4 +1,4 @@
-package com.example.pasya
+package com.pasarMaya
 
 import io.flutter.embedding.android.FlutterActivity
 
