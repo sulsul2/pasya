@@ -75,7 +75,7 @@ void main() {
 
   testWidgets('Customer Market Page Widget Test', (WidgetTester tester) async {
     await tester.pumpWidget(const MaterialApp(
-      home: CustomerMarketPage(),
+      home: CustomerMarketPage(title: '',),
     ));
 
     final customerPageOneFinder = find.byType(CustomerMarketPage);

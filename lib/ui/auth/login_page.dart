@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:pasya/theme.dart';
 import 'package:pasya/ui/widgets/form_input.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:pasya/ui/auth/LoginFunction.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -180,7 +181,21 @@ class _LoginPageState extends State<LoginPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     TextButton(
-                        onPressed: () => Navigator.pushNamed(context, "/main"),
+                        onPressed: () async {
+                          try {
+                            print(usernameController.text);
+                            print(passwordController.text);
+                            final loginModel = await login(usernameController.text, passwordController.text);
+
+                            // Navigate to the main page if login is successful
+                            Navigator.pushNamed(context, "/main");
+                          } catch (e) {
+                            // Show a Scaffold message if login fails
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Failed to login: $e')),
+                            );
+                          }
+                        },
                         style: TextButton.styleFrom(
                           backgroundColor: yellowColor,
                           shape: RoundedRectangleBorder(

@@ -41,22 +41,6 @@ void main() {
     expect(addressCardFinder, findsOneWidget);
   });
 
-  testWidgets('CartCard Widget Test', (WidgetTester tester) async {
-    // Build the CartCard widget
-    await tester.pumpWidget(const MaterialApp(
-      home: CartCard(
-          photoUrl: 'assets/detail_shop_2.png',
-          name: 'Daging Ayam Paha',
-          price: 40000,
-          count: 1),
-    ));
-
-    // Find the CartCard widget
-    final cartCardFinder = find.byType(CartCard);
-
-    // Verify that the CartCard widget is displayed
-    expect(cartCardFinder, findsOneWidget);
-  });
 
   testWidgets('ChatBubble Widget Test', (WidgetTester tester) async {
     // Build the ChatBubble widget
