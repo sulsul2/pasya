@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:pasya/theme.dart';
-import 'package:pasya/ui/chat/chat_page.dart';
-import 'package:pasya/ui/chat/chat_room_page.dart';
+
+
+import '../chat_page.dart';
+import '../chat_room_page.dart';
+import 'image_loader.dart';
 
 class ChatCard extends StatelessWidget {
-  const ChatCard({super.key, required this.chat});
+  const ChatCard({super.key, required this.chat, required this.imageLoader});
 
   final ChatModel chat;
+  final ImageLoader imageLoader;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +35,7 @@ class ChatCard extends StatelessWidget {
         child: Row(
           children: [
             CircleAvatar(
-              backgroundImage: NetworkImage(chat.imageUrl),
+              backgroundImage: imageLoader.load(chat.imageUrl),
               backgroundColor: greyColor,
               maxRadius: 36,
               minRadius: 36,
