@@ -14,7 +14,7 @@ class ChangeAddressPage extends StatelessWidget {
     TextEditingController searchController = TextEditingController();
     Widget content() {
       return Container(
-          margin: const EdgeInsets.only(top: 120),
+          margin: const EdgeInsets.only(top: 100),
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
           decoration: BoxDecoration(color: whiteColor),
           child: Column(

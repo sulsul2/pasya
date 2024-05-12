@@ -107,7 +107,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
           });
         },
         child: Container(
-          margin: const EdgeInsets.only(top: 120),
+          margin: const EdgeInsets.only(top: 100),
           padding: const EdgeInsets.symmetric(horizontal: 20),
           decoration: BoxDecoration(
             color: _blueBackground ? blueColor.withOpacity(0.5) : whiteColor,

@@ -1,19 +1,27 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:pasya/theme.dart';
 import 'package:pasya/ui/widgets/custom_tab.dart';
 import 'package:pasya/ui/widgets/header.dart';
 import 'package:pasya/ui/order/presentation/order_card.dart';
 
-class OrderPage extends StatelessWidget {
+class OrderPage extends StatefulWidget {
   const OrderPage({super.key});
 
+  @override
+  State<OrderPage> createState() => _OrderPageState();
+}
+
+class _OrderPageState extends State<OrderPage> {
+  int tipe = 0;
   @override
   Widget build(BuildContext context) {
     Widget content() {
       return Container(
         padding: const EdgeInsets.only(left: 20, right: 20),
         margin: const EdgeInsets.only(
-          top: 120,
+          top: 100,
         ),
         width: double.infinity,
         decoration: BoxDecoration(color: whiteColor),
@@ -25,20 +33,41 @@ class OrderPage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CustomTab(
-                      text: 'Semua',
-                      color: yellowColor,
-                      padding: 30,
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          tipe = 0;
+                        });
+                      },
+                      child: CustomTab(
+                        text: 'Semua',
+                        color: tipe == 0 ? yellowColor : greyColor,
+                        padding: 30,
+                      ),
                     ),
-                    CustomTab(
-                      text: 'Dikirim',
-                      color: greyColor,
-                      padding: 30,
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          tipe = 1;
+                        });
+                      },
+                      child: CustomTab(
+                        text: 'Dikirim',
+                        color: tipe == 1 ? yellowColor : greyColor,
+                        padding: 30,
+                      ),
                     ),
-                    CustomTab(
-                      text: 'Selesai',
-                      color: greyColor,
-                      padding: 30,
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          tipe = 2;
+                        });
+                      },
+                      child: CustomTab(
+                        text: 'Selesai',
+                        color: tipe == 2 ? yellowColor : greyColor,
+                        padding: 30,
+                      ),
                     ),
                   ],
                 ),
@@ -78,7 +107,7 @@ class OrderPage extends StatelessWidget {
                   height: 8,
                 ),
                 const OrderCard(
-                  tipe: 1,
+                  tipe: 2,
                 ),
               ],
             ),

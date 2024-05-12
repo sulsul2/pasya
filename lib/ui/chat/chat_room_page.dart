@@ -238,25 +238,23 @@ class ChatRoomPage extends StatelessWidget {
     }
 
     return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          children: [
-            bubbleList(),
-            const Header(
-              text: 'Jane Smith',
-              back: true,
-              imageUrl:
-                  'https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?q=80&w=1966&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                customBottonNavigation(),
-              ],
-            ),
-          ],
-        ),
+      body: Stack(
+        children: [
+          bubbleList(),
+          const Header(
+            text: 'Jane Smith',
+            back: true,
+            imageUrl:
+                'https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?q=80&w=1966&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              customBottonNavigation(),
+            ],
+          ),
+        ],
       ),
     );
   }

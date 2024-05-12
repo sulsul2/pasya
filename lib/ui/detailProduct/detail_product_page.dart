@@ -8,6 +8,7 @@ import 'package:pasya/ui/widgets/condition_tab.dart';
 import 'package:pasya/ui/widgets/custom_tab.dart';
 import 'package:pasya/ui/widgets/header.dart';
 import 'package:pasya/ui/detailProduct/presentation/review_card.dart';
+import 'package:pasya/ui/widgets/market_card.dart';
 
 class DetailProductPage extends StatefulWidget {
   const DetailProductPage({super.key});
@@ -242,7 +243,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
 
     Widget contentPicture() {
       return Container(
-        margin: const EdgeInsets.only(top: 120),
+        margin: const EdgeInsets.only(top: 90),
         width: double.infinity,
         height: 280,
         child: Image.asset(
@@ -382,7 +383,41 @@ class _DetailProductPageState extends State<DetailProductPage> {
                   profilUrl: '',
                   description:
                       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
-                )
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                Text(
+                  'Barang Sejenis',
+                  style: blackText.copyWith(fontWeight: semibold, fontSize: 16),
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                GridView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 8,
+                    mainAxisSpacing: 8,
+                    childAspectRatio: 0.9,
+                  ),
+                  itemCount: 2,
+                  itemBuilder: (BuildContext context, int index) {
+                    return MarketCard(
+                      width: 160,
+                      height: 184,
+                      name: 'Daging Ayam Paha',
+                      photoUrl: 'assets/detail_shop_2.png',
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const DetailProductPage()),
+                      ),
+                    );
+                  },
+                ),
               ],
             )),
       );
@@ -394,13 +429,13 @@ class _DetailProductPageState extends State<DetailProductPage> {
       body: Stack(
         children: [
           contentPicture(),
+          SingleChildScrollView(
+            child: content(),
+          ),
           const Header(
             text: 'Daging Ayam Paha',
             shop: true,
             back: true,
-          ),
-          SingleChildScrollView(
-            child: content(),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.end,

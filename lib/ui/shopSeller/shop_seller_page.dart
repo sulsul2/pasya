@@ -11,7 +11,7 @@ class ShopSellerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget content() {
       return Container(
-        margin: const EdgeInsets.only(top: 120),
+        margin: const EdgeInsets.only(top: 100),
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Expanded(
           child: GridView.builder(

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pasya/theme.dart';
@@ -5,14 +6,20 @@ import 'package:pasya/ui/widgets/condition_tab.dart';
 import 'package:pasya/ui/widgets/header.dart';
 import 'package:pasya/ui/payment/presentation/payment_card.dart';
 
-class PaymentPage extends StatelessWidget {
+class PaymentPage extends StatefulWidget {
   const PaymentPage({super.key});
 
+  @override
+  State<PaymentPage> createState() => _PaymentPageState();
+}
+
+class _PaymentPageState extends State<PaymentPage> {
+  int selected = 0;
   @override
   Widget build(BuildContext context) {
     Widget content() {
       return Container(
-        margin: const EdgeInsets.only(top: 120),
+        margin: const EdgeInsets.only(top: 100),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 48),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,32 +85,67 @@ class PaymentPage extends StatelessWidget {
               child: ListView(
                 shrinkWrap: true,
                 physics: const AlwaysScrollableScrollPhysics(),
-                children: const [
-                  PaymentCard(
-                      name: 'Pasya-Pay',
-                      isSaldo: true,
-                      saldo: '200.000',
-                      isCheck: true),
-                  PaymentCard(
-                      name: 'Pasya-Pay',
-                      isSaldo: true,
-                      saldo: '200.000',
-                      isCheck: true),
-                  PaymentCard(
-                      name: 'Pasya-Pay',
-                      isSaldo: true,
-                      saldo: '200.000',
-                      isCheck: true),
-                  PaymentCard(
-                      name: 'Pasya-Pay',
-                      isSaldo: true,
-                      saldo: '200.000',
-                      isCheck: true),
-                  PaymentCard(
-                      name: 'Pasya-Pay',
-                      isSaldo: true,
-                      saldo: '200.000',
-                      isCheck: true),
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selected = 0;
+                      });
+                    },
+                    child: PaymentCard(
+                        name: 'Pasya-Pay',
+                        isSaldo: true,
+                        saldo: '200.000',
+                        isCheck: selected == 0),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selected = 1;
+                      });
+                    },
+                    child: PaymentCard(
+                        name: 'Go-Pay',
+                        isSaldo: true,
+                        saldo: '150.000',
+                        isCheck: selected == 1),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selected = 2;
+                      });
+                    },
+                    child: PaymentCard(
+                        name: 'Dana',
+                        isSaldo: true,
+                        saldo: '98.000',
+                        isCheck: selected == 2),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selected = 3;
+                      });
+                    },
+                    child: PaymentCard(
+                        name: 'Kartu Kredit',
+                        isSaldo: false,
+                        saldo: '200.000',
+                        isCheck: selected == 3),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selected = 4;
+                      });
+                    },
+                    child: PaymentCard(
+                        name: 'COD - Cash on Delivery',
+                        isSaldo: false,
+                        saldo: '200.000',
+                        isCheck: selected == 4),
+                  ),
                 ],
               ),
             ),

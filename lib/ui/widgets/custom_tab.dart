@@ -33,7 +33,9 @@ class CustomTab extends StatelessWidget {
             text,
             style: color == blueColor
                 ? whiteText.copyWith(fontWeight: semibold)
-                : blackText.copyWith(fontWeight: semibold),
+                : color == greyColor
+                    ? blackText.copyWith(fontWeight: regular)
+                    : blackText.copyWith(fontWeight: semibold),
           ),
         ],
       ),

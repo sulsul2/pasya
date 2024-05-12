@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
     ];
     Widget content() {
       return Container(
-          margin: const EdgeInsets.only(top: 120),
+          margin: const EdgeInsets.only(top: 100),
           padding: const EdgeInsets.only(bottom: 15),
           child: ListView(children: [
             Column(
@@ -64,7 +64,9 @@ class _HomePageState extends State<HomePage> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        const CustomerMarketPage()),
+                                        const CustomerMarketPage(
+                                          title: 'Pasar Tradisional',
+                                        )),
                               ),
                               child: Text(
                                 'Detail',
@@ -156,10 +158,19 @@ class _HomePageState extends State<HomePage> {
                         style: blackText.copyWith(
                             fontSize: 16, fontWeight: semibold),
                       ),
-                      Text(
-                        'Detail',
-                        style: blueText.copyWith(
-                            fontSize: 16, fontWeight: semibold),
+                      InkWell(
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const CustomerMarketPage(
+                                    title: 'Peternakan',
+                                  )),
+                        ),
+                        child: Text(
+                          'Detail',
+                          style: blueText.copyWith(
+                              fontSize: 16, fontWeight: semibold),
+                        ),
                       )
                     ],
                   ),
@@ -244,10 +255,19 @@ class _HomePageState extends State<HomePage> {
                         style: blackText.copyWith(
                             fontSize: 16, fontWeight: semibold),
                       ),
-                      Text(
-                        'Detail',
-                        style: blueText.copyWith(
-                            fontSize: 16, fontWeight: semibold),
+                      InkWell(
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const CustomerMarketPage(
+                                    title: 'Perikanan',
+                                  )),
+                        ),
+                        child: Text(
+                          'Detail',
+                          style: blueText.copyWith(
+                              fontSize: 16, fontWeight: semibold),
+                        ),
                       )
                     ],
                   ),

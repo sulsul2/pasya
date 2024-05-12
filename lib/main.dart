@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pasya/providers/cart_provider.dart';
 import 'package:pasya/providers/page_provider.dart';
 // import 'package:pasya/ui/pages/home_page.dart';
 import 'package:pasya/ui/auth/login_page.dart';
@@ -17,7 +18,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider(create: (context) => PageProvider())
+          ChangeNotifierProvider(create: (context) => PageProvider()),
+          ChangeNotifierProvider(create: (context) => CartProvider())
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

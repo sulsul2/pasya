@@ -14,7 +14,7 @@ class DetailMarketPage extends StatelessWidget {
     TextEditingController searchController = TextEditingController();
     Widget content() {
       return Container(
-        margin: const EdgeInsets.only(top: 120),
+        margin: const EdgeInsets.only(top: 100),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pasya/theme.dart';
+import 'package:pasya/ui/detailProduct/detail_product_page.dart';
 import 'package:pasya/ui/widgets/custom_tab.dart';
 
 class OrderCard extends StatelessWidget {
@@ -64,13 +65,33 @@ class OrderCard extends StatelessWidget {
           const SizedBox(
             height: 8,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              CustomTab(text: 'Selesai', color: blueColor, padding: 48),
-              CustomTab(text: 'Pesan Lagi', color: yellowColor, padding: 48)
-            ],
-          )
+          tipe == 0
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomTab(text: 'Selesai', color: blueColor, padding: 48),
+                    GestureDetector(
+                        onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const DetailProductPage()),
+                            ),
+                        child: CustomTab(
+                            text: 'Pesan Lagi',
+                            color: yellowColor,
+                            padding: 48))
+                  ],
+                )
+              : tipe == 1
+                  ? CustomTab(
+                      text: 'Sedang dalam perjalanan',
+                      color: yellowColor,
+                      padding: 60)
+                  : CustomTab(
+                      text: 'Menunggu konfirmasi penjual',
+                      color: greyColor,
+                      padding: 60),
         ],
       ),
     );

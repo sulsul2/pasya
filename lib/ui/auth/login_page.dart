@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pasya/theme.dart';
 import 'package:pasya/ui/widgets/form_input.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -11,11 +13,11 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  bool rememberMe = false;
   @override
   Widget build(BuildContext context) {
     TextEditingController usernameController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
-    bool rememberMe = false;
     Widget content() {
       return Stack(
         children: [
@@ -33,7 +35,8 @@ class _LoginPageState extends State<LoginPage> {
           Stack(
             children: [
               GestureDetector(
-                onTap: () => Navigator.pushNamed(context, "/register"),
+                onTap: () => Navigator.pushNamedAndRemoveUntil(
+                    context, '/register', (route) => false),
                 child: Container(
                   decoration: BoxDecoration(
                       color: greyColor,
@@ -99,112 +102,128 @@ class _LoginPageState extends State<LoginPage> {
                     topRight: Radius.circular(36))),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'Selamat Datang!',
-                  style: blackText.copyWith(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 24,
-                  ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                FormInput(
-                  textController: usernameController,
-                  hintText: 'Input your username',
-                  validator: 'Please input username',
-                  label: 'Username',
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                FormInput(
-                  textController: passwordController,
-                  hintText: 'Input your password',
-                  validator: 'Please input password',
-                  label: 'Password',
-                  isPassword: true,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Row(
-                      children: [
-                        Checkbox(
-                          value: rememberMe,
-                          onChanged: (newValue) {
-                            setState(() {
-                              rememberMe = newValue!;
-                            });
-                          },
-                          shape: const CircleBorder(),
-                          activeColor: yellowColor,
+                Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Selamat Datang!',
+                        style: blackText.copyWith(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24,
                         ),
-                        Text(
-                          'Ingat saya',
-                          style: blueText.copyWith(
-                              fontSize: 16, fontWeight: semibold),
-                        )
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 8.0),
-                      child: Text(
-                        'Lupa Password',
-                        style: blueText.copyWith(
-                            fontSize: 16, fontWeight: semibold),
                       ),
-                    )
-                  ],
-                ),
-                const Spacer(),
-                TextButton(
-                    onPressed: () => Navigator.pushNamed(context, "/main"),
-                    style: TextButton.styleFrom(
-                      backgroundColor: yellowColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
+                      const SizedBox(
+                        height: 30,
                       ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                      FormInput(
+                        textController: usernameController,
+                        hintText: 'Input your username',
+                        validator: 'Please input username',
+                        label: 'Username',
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      FormInput(
+                        textController: passwordController,
+                        hintText: 'Input your password',
+                        validator: 'Please input password',
+                        label: 'Password',
+                        isPassword: true,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(
-                            'Masuk',
-                            style: blackText.copyWith(
-                              fontSize: 16,
-                              fontWeight: semibold,
-                            ),
+                          Row(
+                            children: [
+                              Checkbox(
+                                value: rememberMe,
+                                onChanged: (newValue) {
+                                  setState(() {
+                                    rememberMe = !rememberMe;
+                                  });
+                                },
+                                shape: const CircleBorder(),
+                                // activeColor: yellowColor,
+                              ),
+                              Text(
+                                'Ingat saya',
+                                style: blueText.copyWith(
+                                    fontSize: 16, fontWeight: semibold),
+                              )
+                            ],
                           ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 8.0),
+                            child: GestureDetector(
+                              onTap: () {
+                                launchUrl(
+                                    Uri.parse('https://pasya.agilf.dev/'));
+                              },
+                              child: Text(
+                                'Lupa Password',
+                                style: blueText.copyWith(
+                                    fontSize: 16, fontWeight: semibold),
+                              ),
+                            ),
+                          )
                         ],
                       ),
-                    )),
-                const SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                    ]),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
-                      'Tidak ada akun? ',
-                      style:
-                          blackText.copyWith(fontSize: 16, fontWeight: regular),
+                    TextButton(
+                        onPressed: () => Navigator.pushNamed(context, "/main"),
+                        style: TextButton.styleFrom(
+                          backgroundColor: yellowColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Masuk',
+                                style: blackText.copyWith(
+                                  fontSize: 16,
+                                  fontWeight: semibold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        )),
+                    const SizedBox(
+                      height: 10,
                     ),
-                    InkWell(
-                        onTap: () => Navigator.pushNamed(context, "/register"),
-                        child: Text(
-                          'Daftar sekarang',
-                          style: blueText.copyWith(
-                              fontSize: 16, fontWeight: semibold),
-                        ))
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Tidak ada akun? ',
+                          style: blackText.copyWith(
+                              fontSize: 16, fontWeight: regular),
+                        ),
+                        InkWell(
+                            onTap: () => Navigator.pushNamedAndRemoveUntil(
+                                context, '/register', (route) => false),
+                            child: Text(
+                              'Daftar sekarang',
+                              style: blueText.copyWith(
+                                  fontSize: 16, fontWeight: semibold),
+                            ))
+                      ],
+                    )
                   ],
                 )
               ],
@@ -215,6 +234,10 @@ class _LoginPageState extends State<LoginPage> {
     }
 
     return Scaffold(
-        backgroundColor: blueColor, body: SafeArea(child: content()));
+      backgroundColor: blueColor,
+      body: SafeArea(
+        child: content(),
+      ),
+    );
   }
 }

@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:pasya/providers/cart_provider.dart';
 import 'package:pasya/theme.dart';
 import 'package:pasya/ui/cart/presentation/cart_card.dart';
 import 'package:pasya/ui/checkout/checkout_page.dart';
 import 'package:pasya/ui/widgets/header.dart';
+import 'package:provider/provider.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    CartProvider cartProvider = Provider.of<CartProvider>(context);
     Widget bottomNav() {
       return SafeArea(
         child: Container(
@@ -122,7 +125,7 @@ class CartPage extends StatelessWidget {
 
     Widget content() {
       return Container(
-        margin: const EdgeInsets.only(top: 120),
+        margin: const EdgeInsets.only(top: 100),
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: ListView(
           children: [
@@ -136,64 +139,23 @@ class CartPage extends StatelessWidget {
                 const SizedBox(
                   height: 8,
                 ),
-                const CartCard(
-                    photoUrl: 'assets/detail_shop_2.png',
-                    name: 'Daging Ayam Paha',
-                    price: 40000,
-                    count: 1),
+                // ListView.builder(
+                //   itemCount: cartProvider.cartList.length,
+                //   itemBuilder: (BuildContext context, int index) {
+                //     final cartItem = cartProvider.cartList[index];
+                //     return CartCard(
+                //       cartModel: cartItem,
+                //     );
+                //   },
+                // ),
+                Column(
+                  children: cartProvider.cartList
+                      .map((e) => CartCard(cartModel: e))
+                      .toList(),
+                ),
                 const SizedBox(
                   height: 16,
                 ),
-                Text(
-                  'Toko B',
-                  style: blackText.copyWith(fontWeight: semibold, fontSize: 16),
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                const CartCard(
-                    photoUrl: 'assets/detail_shop_2.png',
-                    name: 'Daging Ayam Paha',
-                    price: 40000,
-                    status: true,
-                    count: 1),
-                const SizedBox(
-                  height: 8,
-                ),
-                const CartCard(
-                    photoUrl: 'assets/detail_shop_2.png',
-                    name: 'Daging Ayam Paha',
-                    price: 40000,
-                    status: true,
-                    count: 1),
-                const SizedBox(
-                  height: 16,
-                ),
-                Text(
-                  'Toko C',
-                  style: blackText.copyWith(fontWeight: semibold, fontSize: 16),
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                const CartCard(
-                    photoUrl: 'assets/detail_shop_2.png',
-                    name: 'Daging Ayam Paha',
-                    price: 40000,
-                    status: true,
-                    count: 1),
-                const SizedBox(
-                  height: 8,
-                ),
-                const CartCard(
-                    photoUrl: 'assets/detail_shop_2.png',
-                    name: 'Daging Ayam Paha',
-                    price: 40000,
-                    status: true,
-                    count: 1),
-                const SizedBox(
-                  height: 20,
-                )
               ],
             ),
           ],

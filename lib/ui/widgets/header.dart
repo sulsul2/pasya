@@ -21,8 +21,7 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Container(
+    return Container(
       width: double.infinity,
       height: 95,
       padding: const EdgeInsets.only(top: 40, bottom: 14, left: 20, right: 20),
@@ -32,18 +31,21 @@ class Header extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
-            width: back ? 40 : 0,
-            height: back ? 40 : 0,
-            decoration: BoxDecoration(
-              color: yellowColor,
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-            child: Center(
-              child: Icon(
-                Icons.arrow_back_ios_outlined,
-                color: blueColor,
-                size: back ? 24.0 : 0,
+          GestureDetector(
+            onTap: () => Navigator.pop(context),
+            child: Container(
+              width: back ? 40 : 0,
+              height: back ? 40 : 0,
+              decoration: BoxDecoration(
+                color: yellowColor,
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: Center(
+                child: Icon(
+                  Icons.arrow_back_ios_outlined,
+                  color: blueColor,
+                  size: back ? 24.0 : 0,
+                ),
               ),
             ),
           ),
@@ -90,6 +92,6 @@ class Header extends StatelessWidget {
           ),
         ],
       ),
-    ));
+    );
   }
 }

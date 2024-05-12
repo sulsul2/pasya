@@ -21,7 +21,7 @@ class _DetailShopPageState extends State<DetailShopPage> {
   Widget build(BuildContext context) {
     Widget contentPicture() {
       return Container(
-        margin: const EdgeInsets.only(top: 120),
+        margin: const EdgeInsets.only(top: 90),
         width: double.infinity,
         height: 280,
         child: Image.asset(
@@ -82,13 +82,13 @@ class _DetailShopPageState extends State<DetailShopPage> {
         body: Stack(
           children: [
             contentPicture(),
+            SingleChildScrollView(
+              child: content(),
+            ),
             const Header(
               text: 'Toko A',
               shop: true,
               back: true,
-            ),
-            SingleChildScrollView(
-              child: content(),
             ),
           ],
         ));

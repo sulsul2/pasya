@@ -1,42 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:pasya/models/cart_model.dart';
+import 'package:pasya/providers/cart_provider.dart';
 import 'package:pasya/theme.dart';
+import 'package:provider/provider.dart';
 
 class CartCard extends StatelessWidget {
-  const CartCard(
-      {super.key,
-      required this.photoUrl,
-      this.status = false,
-      required this.name,
-      required this.price,
-      required this.count});
+  const CartCard({super.key, required this.cartModel});
 
-  final String photoUrl;
-  final bool status;
-  final String name;
-  final int price;
-  final int count;
+  final CartModel cartModel;
 
   @override
   Widget build(BuildContext context) {
+    CartProvider cartProvider = Provider.of<CartProvider>(context);
     return SizedBox(
       width: double.infinity,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            width: 32,
-            height: 32,
-            decoration: BoxDecoration(
-                color: status ? yellowColor : whiteColor,
-                borderRadius: BorderRadius.circular(20.0),
-                border: Border.all(
-                    color: blueColor.withOpacity(0.5), width: status ? 0 : 1)),
-            child: Center(
-              child: Icon(
-                Icons.check,
-                color: status ? blueColor : blueColor.withOpacity(0.5),
-                size: 20.0,
+          GestureDetector(
+            onTap: () => {cartProvider.changeStatusCart(cartModel.id)},
+            child: Container(
+              width: 32,
+              height: 32,
+              decoration: BoxDecoration(
+                  color: cartModel.status ? yellowColor : whiteColor,
+                  borderRadius: BorderRadius.circular(20.0),
+                  border: Border.all(
+                      color: blueColor.withOpacity(0.5),
+                      width: cartModel.status ? 0 : 1)),
+              child: Center(
+                child: Icon(
+                  Icons.check,
+                  color:
+                      cartModel.status ? blueColor : blueColor.withOpacity(0.5),
+                  size: 20.0,
+                ),
               ),
             ),
           ),
@@ -56,7 +56,7 @@ class CartCard extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16),
                     child: Image.asset(
-                      photoUrl,
+                      cartModel.photoUrl,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -69,10 +69,10 @@ class CartCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      name,
+                      cartModel.name,
                       style: blackText.copyWith(fontSize: 16, fontWeight: bold),
                     ),
-                    Text('Rp $price/kg',
+                    Text('Rp ${cartModel.price}/kg',
                         style: blueText.copyWith(
                           fontSize: 16,
                           fontWeight: bold,
@@ -108,7 +108,7 @@ class CartCard extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            count.toString(),
+                            cartModel.count.toString(),
                             style: blackText,
                           ),
                           Container(

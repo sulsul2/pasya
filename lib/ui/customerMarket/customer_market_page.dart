@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 // import 'package:flutter/widgets.dart';
 import 'package:pasya/theme.dart';
 import 'package:pasya/ui/detailMarket/detail_market_page.dart';
@@ -7,15 +9,23 @@ import 'package:pasya/ui/widgets/form_input.dart';
 import 'package:pasya/ui/widgets/header.dart';
 import 'package:pasya/ui/widgets/market_card.dart';
 
-class CustomerMarketPage extends StatelessWidget {
-  const CustomerMarketPage({super.key});
+class CustomerMarketPage extends StatefulWidget {
+  const CustomerMarketPage({super.key, required this.title});
 
+  final String title;
+
+  @override
+  State<CustomerMarketPage> createState() => _CustomerMarketPageState();
+}
+
+class _CustomerMarketPageState extends State<CustomerMarketPage> {
+  int tipe = 0;
   @override
   Widget build(BuildContext context) {
     TextEditingController searchController = TextEditingController();
     Widget content() {
       return Container(
-        margin: const EdgeInsets.only(top: 120),
+        margin: const EdgeInsets.only(top: 100),
         // padding: const EdgeInsets.only(bottom: 15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,23 +49,68 @@ class CustomerMarketPage extends StatelessWidget {
                   const SizedBox(
                     width: 20,
                   ),
-                  CustomTab(text: 'Bumbu', color: yellowColor, padding: 16),
+                  GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          tipe = 0;
+                        });
+                      },
+                      child: CustomTab(
+                          text: 'Bumbu',
+                          color: tipe == 0 ? yellowColor : greyColor,
+                          padding: 16)),
                   const SizedBox(
                     width: 8,
                   ),
-                  CustomTab(text: 'Ikan', color: greyColor, padding: 16),
+                  GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          tipe = 1;
+                        });
+                      },
+                      child: CustomTab(
+                          text: 'Ikan',
+                          color: tipe == 1 ? yellowColor : greyColor,
+                          padding: 16)),
                   const SizedBox(
                     width: 8,
                   ),
-                  CustomTab(text: 'Daging', color: greyColor, padding: 16),
+                  GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          tipe = 2;
+                        });
+                      },
+                      child: CustomTab(
+                          text: 'Daging',
+                          color: tipe == 2 ? yellowColor : greyColor,
+                          padding: 16)),
                   const SizedBox(
                     width: 8,
                   ),
-                  CustomTab(text: 'Sayuran', color: greyColor, padding: 16),
+                  GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          tipe = 3;
+                        });
+                      },
+                      child: CustomTab(
+                          text: 'Sayuran',
+                          color: tipe == 3 ? yellowColor : greyColor,
+                          padding: 16)),
                   const SizedBox(
                     width: 8,
                   ),
-                  CustomTab(text: 'Buahan', color: greyColor, padding: 16),
+                  GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          tipe = 4;
+                        });
+                      },
+                      child: CustomTab(
+                          text: 'Buahan',
+                          color: tipe == 4 ? yellowColor : greyColor,
+                          padding: 16)),
                   const SizedBox(
                     width: 20,
                   ),
@@ -103,8 +158,8 @@ class CustomerMarketPage extends StatelessWidget {
         backgroundColor: whiteColor,
         body: Stack(
           children: [
-            const Header(
-              text: 'Pasar Tradisional',
+            Header(
+              text: widget.title,
               shop: true,
               back: true,
             ),

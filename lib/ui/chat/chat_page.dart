@@ -105,13 +105,11 @@ class ChatPage extends StatelessWidget {
     }
 
     return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          children: [
-            chatList(),
-            const Header(text: 'Chat'),
-          ],
-        ),
+      body: Stack(
+        children: [
+          chatList(),
+          const Header(text: 'Chat'),
+        ],
       ),
     );
   }

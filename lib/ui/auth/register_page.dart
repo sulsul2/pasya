@@ -11,6 +11,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  bool agreeToTerms = false;
   @override
   Widget build(BuildContext context) {
     TextEditingController nameController = TextEditingController();
@@ -20,7 +21,6 @@ class _RegisterPageState extends State<RegisterPage> {
     TextEditingController usernameController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
     TextEditingController passwordVerifController = TextEditingController();
-    bool agreeToTerms = false;
     Widget content() {
       return Stack(
         children: [
@@ -39,7 +39,8 @@ class _RegisterPageState extends State<RegisterPage> {
             alignment: Alignment.topCenter,
             children: [
               GestureDetector(
-                onTap: () => Navigator.pushNamed(context, "/login"),
+                onTap: () => Navigator.pushNamedAndRemoveUntil(
+                    context, '/login', (route) => false),
                 child: Container(
                   decoration: BoxDecoration(
                       color: greyColor,
@@ -199,11 +200,11 @@ class _RegisterPageState extends State<RegisterPage> {
                           value: agreeToTerms,
                           onChanged: (newValue) {
                             setState(() {
-                              agreeToTerms = newValue!;
+                              agreeToTerms = !agreeToTerms;
                             });
                           },
                           shape: const CircleBorder(),
-                          activeColor: yellowColor,
+                          // activeColor: yellowColor,
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
