@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pasya/models/cart_model.dart';
+import 'package:pasya/ui/cart/data/cart_model.dart';
 
 class CartProvider extends ChangeNotifier {
   final List<CartModel> _cartList = [

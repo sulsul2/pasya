@@ -2,10 +2,12 @@
 // import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:pasya/theme.dart';
+import 'package:pasya/ui/detailProduct/data/product_provider.dart';
 // import 'package:pasya/ui/pages/customer_page_second.dart';
 import 'package:pasya/ui/detailProduct/detail_product_page.dart';
 import 'package:pasya/ui/widgets/header.dart';
 import 'package:pasya/ui/widgets/market_card.dart';
+import 'package:provider/provider.dart';
 // import 'package:scroll_page_view/pager/page_controller.dart';
 // import 'package:scroll_page_view/pager/scroll_page_view.dart';
 
@@ -19,6 +21,7 @@ class DetailShopPage extends StatefulWidget {
 class _DetailShopPageState extends State<DetailShopPage> {
   @override
   Widget build(BuildContext context) {
+    ProductProvider productProvider = Provider.of<ProductProvider>(context);
     Widget contentPicture() {
       return Container(
         margin: const EdgeInsets.only(top: 90),
@@ -54,17 +57,19 @@ class _DetailShopPageState extends State<DetailShopPage> {
                 mainAxisSpacing: 8,
                 childAspectRatio: 0.9,
               ),
-              itemCount: 13,
+              itemCount: productProvider.productList.length,
               itemBuilder: (BuildContext context, int index) {
+                var product = productProvider.productList[index];
                 return MarketCard(
                   width: 160,
                   height: 184,
-                  name: 'Daging Ayam Paha',
-                  photoUrl: 'assets/detail_shop_2.png',
+                  name: product.name,
+                  photoUrl: 'assets/ayam_mentah.png',
                   onPressed: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const DetailProductPage()),
+                      builder: (context) => const DetailProductPage(),
+                    ),
                   ),
                 );
               },

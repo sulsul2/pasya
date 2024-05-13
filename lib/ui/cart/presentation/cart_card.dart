@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:pasya/models/cart_model.dart';
-import 'package:pasya/providers/cart_provider.dart';
+import 'package:pasya/ui/cart/data/cart_model.dart';
+import 'package:pasya/ui/cart/data/cart_provider.dart';
 import 'package:pasya/theme.dart';
 import 'package:provider/provider.dart';
 

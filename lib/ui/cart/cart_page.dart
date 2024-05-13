@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pasya/providers/cart_provider.dart';
 import 'package:pasya/theme.dart';
+import 'package:pasya/ui/cart/data/cart_provider.dart';
 import 'package:pasya/ui/cart/presentation/cart_card.dart';
 import 'package:pasya/ui/checkout/checkout_page.dart';
 import 'package:pasya/ui/widgets/header.dart';

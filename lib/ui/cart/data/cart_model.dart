@@ -18,6 +18,30 @@ class CartModel extends Equatable {
       this.status = false,
       required this.tipe});
 
+  factory CartModel.fromJson(Map<String, dynamic> json) {
+    return CartModel(
+      id: json['id'],
+      photoUrl: json['photoUrl'],
+      name: json['name'],
+      price: json['price'],
+      count: json['count'],
+      status: json['status'],
+      tipe: json['tipe'],
+    );
+  }
+
+  toJson() {
+    return {
+      'id': id,
+      'photoUrl': photoUrl,
+      'name': name,
+      'price': price,
+      'count': count,
+      'status': status,
+      'tipe': tipe,
+    };
+  }
+
   @override
   List<Object?> get props => [id, photoUrl, name, price, count];
 }

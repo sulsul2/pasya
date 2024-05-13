@@ -1,7 +1,8 @@
-import 'dart:async';
-
+// import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:pasya/theme.dart';
+import 'package:pasya/ui/detailProduct/data/product_provider.dart';
+import 'package:provider/provider.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -13,11 +14,17 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
-    Timer(
-        const Duration(seconds: 3),
-        () => Navigator.pushNamedAndRemoveUntil(
-            context, '/login', (route) => false));
+    getInit();
     super.initState();
+  }
+
+  getInit() async {
+    final navigator = Navigator.of(context);
+    ProductProvider productProvider =
+        Provider.of<ProductProvider>(context, listen: false);
+
+    await productProvider.getProduct();
+    await navigator.pushNamedAndRemoveUntil('/login', (route) => false);
   }
 
   @override
