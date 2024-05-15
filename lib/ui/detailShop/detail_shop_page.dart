@@ -12,13 +12,22 @@ import 'package:provider/provider.dart';
 // import 'package:scroll_page_view/pager/scroll_page_view.dart';
 
 class DetailShopPage extends StatefulWidget {
-  const DetailShopPage({super.key});
+  const DetailShopPage({super.key, required this.id});
+
+  final String id;
 
   @override
   State<DetailShopPage> createState() => _DetailShopPageState();
 }
 
 class _DetailShopPageState extends State<DetailShopPage> {
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() => Provider.of<ProductProvider>(context, listen: false)
+        .getProduct(widget.id));
+  }
+
   @override
   Widget build(BuildContext context) {
     ProductProvider productProvider = Provider.of<ProductProvider>(context);
@@ -64,7 +73,8 @@ class _DetailShopPageState extends State<DetailShopPage> {
                   width: 160,
                   height: 184,
                   name: product.name,
-                  photoUrl: 'assets/ayam_mentah.png',
+                  photoUrl:
+                      'https://cdn.discordapp.com/attachments/838266599348895784/1239629181566976080/martijn-vonk-pCydkpyHMHs-unsplash.jpg?ex=66439e24&is=66424ca4&hm=cf7b813032998e7cc3b2db811518023b5567cbe264f9bbf982924eb947d5d539&',
                   onPressed: () => Navigator.push(
                     context,
                     MaterialPageRoute(

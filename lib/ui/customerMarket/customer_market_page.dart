@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 // import 'package:flutter/widgets.dart';
 import 'package:pasya/theme.dart';
+import 'package:pasya/ui/customerMarket/data/market_provider.dart';
 import 'package:pasya/ui/detailMarket/detail_market_page.dart';
 import 'package:pasya/ui/widgets/custom_tab.dart';
 import 'package:pasya/ui/widgets/form_input.dart';
 import 'package:pasya/ui/widgets/header.dart';
 import 'package:pasya/ui/widgets/market_card.dart';
+import 'package:provider/provider.dart';
 
 class CustomerMarketPage extends StatefulWidget {
   const CustomerMarketPage({super.key, required this.title});
@@ -23,6 +25,7 @@ class _CustomerMarketPageState extends State<CustomerMarketPage> {
   @override
   Widget build(BuildContext context) {
     TextEditingController searchController = TextEditingController();
+    MarketProvider marketProvider = Provider.of<MarketProvider>(context);
     Widget content() {
       return Container(
         margin: const EdgeInsets.only(top: 100),
@@ -132,17 +135,20 @@ class _CustomerMarketPageState extends State<CustomerMarketPage> {
                     mainAxisSpacing: 8,
                     childAspectRatio: 0.9,
                   ),
-                  itemCount: 7,
+                  itemCount: marketProvider.marketList.length,
                   itemBuilder: (BuildContext context, int index) {
+                    var market = marketProvider.marketList[index];
                     return MarketCard(
                       width: 160,
                       height: 184,
-                      name: 'Pasar A',
-                      photoUrl: 'assets/pasar_ex.png',
+                      name: market.name,
+                      photoUrl: market.image,
                       onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const DetailMarketPage()),
+                            builder: (context) => DetailMarketPage(
+                                  idMarket: market.id,
+                                )),
                       ),
                     );
                   },

@@ -409,7 +409,8 @@ class _DetailProductPageState extends State<DetailProductPage> {
                       width: 160,
                       height: 184,
                       name: 'Daging Ayam Paha',
-                      photoUrl: 'assets/detail_shop_2.png',
+                      photoUrl:
+                          'https://cdn.discordapp.com/attachments/838266599348895784/1239629181566976080/martijn-vonk-pCydkpyHMHs-unsplash.jpg?ex=66439e24&is=66424ca4&hm=cf7b813032998e7cc3b2db811518023b5567cbe264f9bbf982924eb947d5d539&',
                       onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(

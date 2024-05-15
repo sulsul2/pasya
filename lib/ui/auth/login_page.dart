@@ -185,7 +185,10 @@ class _LoginPageState extends State<LoginPage> {
                           try {
                             print(usernameController.text);
                             print(passwordController.text);
-                            final loginModel = await login(usernameController.text, passwordController.text);
+                            final loginModel = await login(
+                                usernameController.text,
+                                passwordController.text);
+                            print(loginModel);
 
                             // Navigate to the main page if login is successful
                             Navigator.pushNamed(context, "/main");

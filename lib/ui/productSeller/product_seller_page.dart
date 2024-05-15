@@ -33,7 +33,9 @@ class ProductSellerPage extends StatelessWidget {
                 onPressed: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const DetailMarketPage()),
+                      builder: (context) => const DetailMarketPage(
+                            idMarket: 2,
+                          )),
                 ),
               );
             },

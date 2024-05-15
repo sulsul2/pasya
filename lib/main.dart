@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pasya/providers/page_provider.dart';
 // import 'package:pasya/ui/pages/home_page.dart';
 import 'package:pasya/ui/auth/login_page.dart';
+import 'package:pasya/ui/customerMarket/data/market_provider.dart';
+import 'package:pasya/ui/detailMarket/data/shop_provider.dart';
 import 'package:pasya/ui/detailProduct/data/product_provider.dart';
 import 'package:pasya/ui/main_page.dart';
 import 'package:pasya/ui/auth/register_page.dart';
@@ -21,7 +23,9 @@ class MyApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider(create: (context) => PageProvider()),
           ChangeNotifierProvider(create: (context) => CartProvider()),
+          ChangeNotifierProvider(create: (context) => MarketProvider()),
           ChangeNotifierProvider(create: (context) => ProductProvider()),
+          ChangeNotifierProvider(create: (context) => ShopProvider()),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

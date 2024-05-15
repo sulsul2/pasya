@@ -14,7 +14,6 @@ import 'package:pasya/ui/order/order_page.dart';
 import 'package:pasya/ui/payment/payment_page.dart';
 import 'package:pasya/ui/profile/profile_page.dart';
 
-
 void main() {
   testWidgets('ChatPage Widget Test', (WidgetTester tester) async {
 // Build the ChatPage widget
@@ -62,7 +61,6 @@ void main() {
     expect(changeAddressPagePageFinder, findsOneWidget);
   });
 
-
   testWidgets('Checkout Page Widget Test', (WidgetTester tester) async {
     await tester.pumpWidget(const MaterialApp(
       home: CheckoutPage(),
@@ -75,7 +73,9 @@ void main() {
 
   testWidgets('Customer Market Page Widget Test', (WidgetTester tester) async {
     await tester.pumpWidget(const MaterialApp(
-      home: CustomerMarketPage(title: '',),
+      home: CustomerMarketPage(
+        title: '',
+      ),
     ));
 
     final customerPageOneFinder = find.byType(CustomerMarketPage);
@@ -85,7 +85,9 @@ void main() {
 
   testWidgets('Detail Market Page Widget Test', (WidgetTester tester) async {
     await tester.pumpWidget(const MaterialApp(
-      home: DetailMarketPage(),
+      home: DetailMarketPage(
+        idMarket: 2,
+      ),
     ));
 
     final detailMarketPageFinder = find.byType(DetailMarketPage);
@@ -93,11 +95,11 @@ void main() {
     expect(detailMarketPageFinder, findsOneWidget);
   });
 
-
-
   testWidgets('Detail Shop Page Widget Test', (WidgetTester tester) async {
     await tester.pumpWidget(const MaterialApp(
-      home: DetailShopPage(),
+      home: DetailShopPage(
+        id: '',
+      ),
     ));
 
     final detailShopPageFinder = find.byType(DetailShopPage);
@@ -108,27 +110,25 @@ void main() {
   testWidgets('Login Page Widget Test', (WidgetTester tester) async {
     await tester.pumpWidget(MaterialApp(
         home: Column(
-          children: <Widget>[
-            Expanded(
-              child: ListView(
-                children: const [
-                  SizedBox(
-                    width: 200.0,
-                    height: 300.0,
-                    child:LoginPage(),
-                  ),
-                ],
+      children: <Widget>[
+        Expanded(
+          child: ListView(
+            children: const [
+              SizedBox(
+                width: 200.0,
+                height: 300.0,
+                child: LoginPage(),
               ),
-            ),
-          ],
-        )
-    ));
+            ],
+          ),
+        ),
+      ],
+    )));
 
     final loginPageFinder = find.byType(LoginPage);
 
     expect(loginPageFinder, findsOneWidget);
   });
-
 
   testWidgets('Order Page Widget Test', (WidgetTester tester) async {
     await tester.pumpWidget(const MaterialApp(
@@ -169,6 +169,4 @@ void main() {
 
     expect(registerPageFinder, findsOneWidget);
   });
-
-
 }

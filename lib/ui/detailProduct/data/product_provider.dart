@@ -12,9 +12,9 @@ class ProductProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> getProduct() async {
+  Future<void> getProduct(String id) async {
     try {
-      List<ProductModel> products = await ProductService().getProduct();
+      List<ProductModel> products = await ProductService().getProductbyId(id);
       _productList = products;
       notifyListeners();
     } catch (e) {
