@@ -32,7 +32,7 @@ class _SplashPageState extends State<SplashPage> {
     await marketProvider.getMarket();
     // await productProvider.getProduct();
     // await shopProvider.getShop(2);
-    await navigator.pushNamedAndRemoveUntil('/main', (route) => false);
+    await navigator.pushNamedAndRemoveUntil('/login', (route) => false);
   }
 
   @override

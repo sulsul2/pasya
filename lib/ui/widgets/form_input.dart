@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:pasya/theme.dart';
 
 class FormInput extends StatefulWidget {
-  const FormInput({
-    super.key,
-    required this.textController,
-    required this.hintText,
-    this.validator = 'Please',
-    required this.label,
-    this.isPassword = false,
-    this.isSearch = false,
-  });
+  const FormInput(
+      {super.key,
+      required this.textController,
+      required this.hintText,
+      this.validator = 'Please',
+      required this.label,
+      this.isPassword = false,
+      this.isSearch = false,
+      this.status = true,
+      this.defaultValue,
+      this.suffix = false});
 
   final TextEditingController textController;
   final bool isPassword;
@@ -18,6 +20,9 @@ class FormInput extends StatefulWidget {
   final String hintText;
   final String validator;
   final String label;
+  final bool status;
+  final String? defaultValue;
+  final bool suffix;
 
   @override
   State<FormInput> createState() => _FormInputState();
@@ -28,6 +33,9 @@ class _FormInputState extends State<FormInput> {
 
   @override
   Widget build(BuildContext context) {
+    if (widget.defaultValue != null) {
+      widget.textController.text = widget.defaultValue!;
+    }
     return Container(
       padding: const EdgeInsets.all(0),
       child: Column(
@@ -53,6 +61,7 @@ class _FormInputState extends State<FormInput> {
             obscureText: widget.isPassword ? isObscure : false,
             obscuringCharacter: '*',
             cursorColor: blueColor.withOpacity(0.5),
+            enabled: widget.status,
             validator: (e) {
               if (e!.isEmpty) {
                 return widget.validator;
@@ -79,18 +88,20 @@ class _FormInputState extends State<FormInput> {
                       fontWeight: regular,
                     ),
               suffixIcon: Visibility(
-                visible: widget.isPassword,
+                visible: widget.isPassword || widget.suffix,
                 child: IconButton(
                   onPressed: () {
                     setState(() {
-                      isObscure = !isObscure;
+                      widget.isPassword ? isObscure = !isObscure : '';
                     });
                   },
                   icon: Icon(
-                    isObscure
-                        ? Icons.visibility_off_outlined
-                        : Icons.visibility_outlined,
-                    color: greyColor,
+                    widget.suffix
+                        ? Icons.edit
+                        : isObscure
+                            ? Icons.visibility_off_outlined
+                            : Icons.visibility_outlined,
+                    color: widget.suffix ? blueColor : greyColor,
                   ),
                 ),
               ),

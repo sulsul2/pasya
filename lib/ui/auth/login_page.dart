@@ -17,7 +17,7 @@ class _LoginPageState extends State<LoginPage> {
   bool rememberMe = false;
   @override
   Widget build(BuildContext context) {
-    TextEditingController usernameController = TextEditingController();
+    TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
     Widget content() {
       return Stack(
@@ -101,149 +101,157 @@ class _LoginPageState extends State<LoginPage> {
                 borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(36),
                     topRight: Radius.circular(36))),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: ListView(
               children: [
                 Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Selamat Datang!',
-                        style: blackText.copyWith(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      FormInput(
-                        textController: usernameController,
-                        hintText: 'Input your username',
-                        validator: 'Please input username',
-                        label: 'Username',
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      FormInput(
-                        textController: passwordController,
-                        hintText: 'Input your password',
-                        validator: 'Please input password',
-                        label: 'Password',
-                        isPassword: true,
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
+                          Text(
+                            'Selamat Datang!',
+                            style: blackText.copyWith(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 24,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          FormInput(
+                            textController: emailController,
+                            hintText: 'Input your email',
+                            validator: 'Please input email',
+                            label: 'email',
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          FormInput(
+                            textController: passwordController,
+                            hintText: 'Input your password',
+                            validator: 'Please input password',
+                            label: 'Password',
+                            isPassword: true,
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Checkbox(
-                                value: rememberMe,
-                                onChanged: (newValue) {
-                                  setState(() {
-                                    rememberMe = !rememberMe;
-                                  });
-                                },
-                                shape: const CircleBorder(),
-                                // activeColor: yellowColor,
+                              Row(
+                                children: [
+                                  Checkbox(
+                                    value: rememberMe,
+                                    onChanged: (newValue) {
+                                      setState(() {
+                                        rememberMe = !rememberMe;
+                                      });
+                                    },
+                                    shape: const CircleBorder(),
+                                    // activeColor: yellowColor,
+                                  ),
+                                  Text(
+                                    'Ingat saya',
+                                    style: blueText.copyWith(
+                                        fontSize: 16, fontWeight: semibold),
+                                  )
+                                ],
                               ),
-                              Text(
-                                'Ingat saya',
-                                style: blueText.copyWith(
-                                    fontSize: 16, fontWeight: semibold),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 8.0),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    launchUrl(
+                                        Uri.parse('https://pasya.agilf.dev/'));
+                                  },
+                                  child: Text(
+                                    'Lupa Password',
+                                    style: blueText.copyWith(
+                                        fontSize: 16, fontWeight: semibold),
+                                  ),
+                                ),
                               )
                             ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 8.0),
-                            child: GestureDetector(
-                              onTap: () {
-                                launchUrl(
-                                    Uri.parse('https://pasya.agilf.dev/'));
-                              },
-                              child: Text(
-                                'Lupa Password',
-                                style: blueText.copyWith(
-                                    fontSize: 16, fontWeight: semibold),
+                          const SizedBox(
+                            height: 16,
+                          ),
+                        ]),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        TextButton(
+                            onPressed: () async {
+                              try {
+                                print(emailController.text);
+                                print(passwordController.text);
+                                final loginModel = await login(
+                                    emailController.text,
+                                    passwordController.text);
+                                print(loginModel);
+
+                                // Navigate to the main page if login is successful
+                                Navigator.pushNamed(context, "/main");
+                              } catch (e) {
+                                // Show a Scaffold message if login fails
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                      content: Text('Failed to login: $e')),
+                                );
+                              }
+                            },
+                            style: TextButton.styleFrom(
+                              backgroundColor: yellowColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
                               ),
                             ),
-                          )
-                        ],
-                      ),
-                    ]),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    TextButton(
-                        onPressed: () async {
-                          try {
-                            print(usernameController.text);
-                            print(passwordController.text);
-                            final loginModel = await login(
-                                usernameController.text,
-                                passwordController.text);
-                            print(loginModel);
-
-                            // Navigate to the main page if login is successful
-                            Navigator.pushNamed(context, "/main");
-                          } catch (e) {
-                            // Show a Scaffold message if login fails
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text('Failed to login: $e')),
-                            );
-                          }
-                        },
-                        style: TextButton.styleFrom(
-                          backgroundColor: yellowColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Masuk',
-                                style: blackText.copyWith(
-                                  fontSize: 16,
-                                  fontWeight: semibold,
-                                ),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 10),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Masuk',
+                                    style: blackText.copyWith(
+                                      fontSize: 16,
+                                      fontWeight: semibold,
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
-                        )),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Tidak ada akun? ',
-                          style: blackText.copyWith(
-                              fontSize: 16, fontWeight: regular),
+                            )),
+                        const SizedBox(
+                          height: 10,
                         ),
-                        InkWell(
-                            onTap: () => Navigator.pushNamedAndRemoveUntil(
-                                context, '/register', (route) => false),
-                            child: Text(
-                              'Daftar sekarang',
-                              style: blueText.copyWith(
-                                  fontSize: 16, fontWeight: semibold),
-                            ))
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Tidak ada akun? ',
+                              style: blackText.copyWith(
+                                  fontSize: 16, fontWeight: regular),
+                            ),
+                            InkWell(
+                                onTap: () => Navigator.pushNamedAndRemoveUntil(
+                                    context, '/register', (route) => false),
+                                child: Text(
+                                  'Daftar sekarang',
+                                  style: blueText.copyWith(
+                                      fontSize: 16, fontWeight: semibold),
+                                ))
+                          ],
+                        )
                       ],
                     )
                   ],
-                )
+                ),
               ],
             ),
           )
