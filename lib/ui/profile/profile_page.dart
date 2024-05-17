@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pasya/theme.dart';
 import 'package:pasya/ui/widgets/form_input.dart';
 import 'package:pasya/ui/widgets/header.dart';
 
@@ -72,7 +73,37 @@ class ProfilePage extends StatelessWidget {
                   suffix: true,
                 ),
                 const SizedBox(
-                  height: 80,
+                  height: 20,
+                ),
+                TextButton(
+                    onPressed: () {
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, '/login', (route) => false);
+                    },
+                    style: TextButton.styleFrom(
+                      backgroundColor: redColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Log Out',
+                            style: whiteText.copyWith(
+                              fontSize: 16,
+                              fontWeight: semibold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    )),
+                const SizedBox(
+                  height: 96,
                 ),
               ],
             ),

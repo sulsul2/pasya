@@ -97,7 +97,8 @@ class _HomePageState extends State<HomePage> {
                           width: 120,
                           height: 148,
                           name: market.name,
-                          photoUrl: market.image,
+                          photoUrl:
+                              'https://media.timeout.com/images/105263065/750/422/image.jpg',
                           onPressed: () => Navigator.push(
                             context,
                             MaterialPageRoute(
