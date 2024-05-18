@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'LoginModel.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<LoginModel> login(String email, String password) async {
   var body = jsonEncode({
@@ -18,7 +19,11 @@ Future<LoginModel> login(String email, String password) async {
   );
 
   if (response.statusCode == 200) {
-    return LoginModel.fromJson(jsonDecode(response.body));
+    final loginModel = LoginModel.fromJson(jsonDecode(response.body));
+    // Store the token
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('token', loginModel.token);
+    return loginModel;
   } else {
     throw Exception('Failed to login');
   }

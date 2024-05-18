@@ -4,11 +4,11 @@ import 'package:pasya/theme.dart';
 class MarketCard extends StatelessWidget {
   const MarketCard(
       {super.key,
-      required this.width,
-      required this.height,
-      required this.name,
-      required this.photoUrl,
-      required this.onPressed});
+        required this.width,
+        required this.height,
+        required this.name,
+        required this.photoUrl,
+        required this.onPressed});
 
   final double width;
   final double height;
@@ -39,7 +39,7 @@ class MarketCard extends StatelessWidget {
               width: double.infinity,
               height: width == 120 ? 100 : 140,
               decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(16)),
+              BoxDecoration(borderRadius: BorderRadius.circular(16)),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: Image.network(
@@ -51,9 +51,12 @@ class MarketCard extends StatelessWidget {
             const SizedBox(
               height: 6,
             ),
-            Text(
-              name,
-              style: blackText,
+            Flexible(
+              child: Text(
+                name,
+                style: blackText,
+                overflow: TextOverflow.ellipsis,
+              ),
             )
           ],
         ),

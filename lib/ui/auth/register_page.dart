@@ -1,26 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:pasya/theme.dart';
 import 'package:pasya/ui/widgets/form_input.dart';
 
+import 'domain/register_function.dart';
+import 'domain/register_model.dart';
+
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
-
   @override
   State<RegisterPage> createState() => _RegisterPageState();
 }
 
 class _RegisterPageState extends State<RegisterPage> {
   bool agreeToTerms = false;
+
+  // Move the creation of your TextEditingController's here
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController numberController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController passwordVerifController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    TextEditingController nameController = TextEditingController();
-    TextEditingController addressController = TextEditingController();
-    TextEditingController emailController = TextEditingController();
-    TextEditingController numberController = TextEditingController();
-    TextEditingController usernameController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
-    TextEditingController passwordVerifController = TextEditingController();
     Widget content() {
       return Stack(
         children: [
@@ -118,7 +122,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      'Buat akun',
+                      'Create Yout Account',
                       style: blackText.copyWith(
                         fontWeight: FontWeight.bold,
                         fontSize: 24,
@@ -136,33 +140,33 @@ class _RegisterPageState extends State<RegisterPage> {
                     const SizedBox(
                       height: 20,
                     ),
-                    FormInput(
-                      textController: addressController,
-                      hintText: 'Input your address',
-                      validator: 'Please input address',
-                      label: 'Address',
-                    ),
+                    // FormInput(
+                    //   textController: addressController,
+                    //   hintText: 'Input your address',
+                    //   validator: 'Please input address',
+                    //   label: 'Address',
+                    // ),
+                    // const SizedBox(
+                    //   height: 20,
+                    // ),
+                    // FormInput(
+                    //   textController: emailController,
+                    //   hintText: 'Input your email',
+                    //   validator: 'Please input email',
+                    //   label: 'Email',
+                    // ),
                     const SizedBox(
                       height: 20,
                     ),
-                    FormInput(
-                      textController: emailController,
-                      hintText: 'Input your email',
-                      validator: 'Please input email',
-                      label: 'Email',
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    FormInput(
-                      textController: numberController,
-                      hintText: 'Input your number',
-                      validator: 'Please input number',
-                      label: 'Number',
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
+                    // FormInput(
+                    //   textController: numberController,
+                    //   hintText: 'Input your number',
+                    //   validator: 'Please input number',
+                    //   label: 'Number',
+                    // ),
+                    // const SizedBox(
+                    //   height: 20,
+                    // ),
                     FormInput(
                       textController: usernameController,
                       hintText: 'Input your username',
@@ -227,7 +231,25 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                     const SizedBox(height: 10),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          try {
+                            final registerModel = RegisterModel(
+                              name: nameController.text,
+                              userName: usernameController.text,
+                              email: emailController.text,
+                              password: passwordController.text,
+                              confirmPassword: passwordVerifController.text,
+                            );
+                            await register(registerModel);
+                            // Navigate to the login page if registration is successful
+                            Navigator.pushNamed(context, "/login");
+                          } catch (e) {
+                            // Show a Scaffold message if registration fails
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Failed to register: $e')),
+                            );
+                          }
+                        },
                         style: TextButton.styleFrom(
                           backgroundColor: yellowColor,
                           shape: RoundedRectangleBorder(

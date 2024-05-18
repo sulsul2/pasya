@@ -108,7 +108,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       );
-                    }).toList(),
+                    }),
                     const SizedBox(
                       width: 20,
                     )
