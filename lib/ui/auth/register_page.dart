@@ -149,12 +149,12 @@ class _RegisterPageState extends State<RegisterPage> {
                     // const SizedBox(
                     //   height: 20,
                     // ),
-                    // FormInput(
-                    //   textController: emailController,
-                    //   hintText: 'Input your email',
-                    //   validator: 'Please input email',
-                    //   label: 'Email',
-                    // ),
+                    FormInput(
+                      textController: emailController,
+                      hintText: 'Input your email',
+                      validator: 'Please input email',
+                      label: 'Email',
+                    ),
                     const SizedBox(
                       height: 20,
                     ),
@@ -240,10 +240,16 @@ class _RegisterPageState extends State<RegisterPage> {
                               password: passwordController.text,
                               confirmPassword: passwordVerifController.text,
                             );
+                            print(nameController.text);
+                            print(usernameController.text);
+                            print(emailController.text);
+                            print(passwordController.text);
+                            print(passwordVerifController.text);
                             await register(registerModel);
                             // Navigate to the login page if registration is successful
                             Navigator.pushNamed(context, "/login");
                           } catch (e) {
+                            print(e);
                             // Show a Scaffold message if registration fails
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(content: Text('Failed to register: $e')),

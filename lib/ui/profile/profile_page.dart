@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pasya/theme.dart';
 import 'package:pasya/ui/widgets/form_input.dart';
 import 'package:pasya/ui/widgets/header.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -89,17 +90,28 @@ class ProfilePage extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Log Out',
-                            style: whiteText.copyWith(
-                              fontSize: 16,
-                              fontWeight: semibold,
+                      child: GestureDetector(
+                        onTap: () async {
+                          // Perform logout operation here
+                          // For example, you might want to remove the user token from shared preferences
+                          final prefs = await SharedPreferences.getInstance();
+                          await prefs.remove('token');
+
+                          // Then navigate to the login page
+                          Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Log Out',
+                              style: whiteText.copyWith(
+                                fontSize: 16,
+                                fontWeight: semibold,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     )),
                 const SizedBox(

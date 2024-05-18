@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "513708130394",
+    "project_id": "pasarmaya-itb",
+    "storage_bucket": "pasarmaya-itb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513708130394:android:0cd68e631e9e19bcc21863",
+        "android_client_info": {
+          "package_name": "com.example.pasya"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtXb_INf9isHuo7OHq1Pok5DveeRtYYnA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513708130394:android:a371d090f9a21ff9c21863",
+        "android_client_info": {
+          "package_name": "com.pasarMaya"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtXb_INf9isHuo7OHq1Pok5DveeRtYYnA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

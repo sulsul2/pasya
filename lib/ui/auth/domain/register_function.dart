@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import './register_model.dart';
-Future<void> register(RegisterModel registerModel) async {
+
+Future<Map<String, dynamic>> register(RegisterModel registerModel) async {
   final response = await http.post(
     Uri.parse('https://pasya-api.agilf.dev/api/Auth/Register'),
     body: jsonEncode(registerModel.toJson()),
@@ -12,6 +13,15 @@ Future<void> register(RegisterModel registerModel) async {
   );
 
   if (response.statusCode != 200) {
-    throw Exception('Failed to register');
+    final responseBody = jsonDecode(response.body);
+    throw Exception(responseBody['message']);
+  } else {
+    final responseBody = jsonDecode(response.body);
+    return {
+      'isSuccess': responseBody['isSuccess'],
+      'statusCode': responseBody['statusCode'],
+      'message': responseBody['message'],
+      'timestamp': responseBody['timestamp'],
+    };
   }
 }
