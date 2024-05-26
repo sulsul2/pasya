@@ -13,7 +13,7 @@ class MarketService {
 
     final response = await http.get(
         Uri.parse(
-            'https://pasya-api.agilf.dev/api/Market?PageNumber=1&PageSize=50'),
+            'https://pasya-api.agilf.dev/api/Market?PageNumber=1&PageSize=10'),
         headers: headers);
 
     if (response.statusCode == 200) {

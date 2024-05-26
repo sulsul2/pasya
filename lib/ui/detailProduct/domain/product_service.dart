@@ -13,7 +13,7 @@ class ProductService {
 
     final response = await http.get(
         Uri.parse(
-            'https://pasya-api.agilf.dev/api/Product?PageNumber=1&PageSize=50'),
+            'https://pasya-api.agilf.dev/api/Product?PageNumber=1&PageSize=10'),
         headers: headers);
 
     if (response.statusCode == 200) {
@@ -36,7 +36,7 @@ class ProductService {
 
     final response = await http.get(
         Uri.parse(
-            'https://pasya-api.agilf.dev/api/User/$id/products?PageNumber=1&PageSize=50'),
+            'https://pasya-api.agilf.dev/api/User/$id/products?PageNumber=1&PageSize=10'),
         headers: headers);
 
     if (response.statusCode == 200) {

@@ -91,18 +91,23 @@ class CartCard extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Container(
-                            width: 32,
-                            height: double.infinity,
-                            decoration: BoxDecoration(
-                              color: yellowColor,
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                            child: Center(
-                              child: Icon(
-                                Icons.remove,
-                                color: blueColor,
-                                size: 16,
+                          GestureDetector(
+                            onTap: () {
+                              cartProvider.chageCount(cartModel.id, false);
+                            },
+                            child: Container(
+                              width: 32,
+                              height: double.infinity,
+                              decoration: BoxDecoration(
+                                color: yellowColor,
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                              child: Center(
+                                child: Icon(
+                                  Icons.remove,
+                                  color: blueColor,
+                                  size: 16,
+                                ),
                               ),
                             ),
                           ),
@@ -110,18 +115,23 @@ class CartCard extends StatelessWidget {
                             cartModel.count.toString(),
                             style: blackText,
                           ),
-                          Container(
-                            width: 32,
-                            height: double.infinity,
-                            decoration: BoxDecoration(
-                              color: yellowColor,
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                            child: Center(
-                              child: Icon(
-                                Icons.add,
-                                color: blueColor,
-                                size: 16,
+                          GestureDetector(
+                            onTap: () {
+                              cartProvider.chageCount(cartModel.id, true);
+                            },
+                            child: Container(
+                              width: 32,
+                              height: double.infinity,
+                              decoration: BoxDecoration(
+                                color: yellowColor,
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                              child: Center(
+                                child: Icon(
+                                  Icons.add,
+                                  color: blueColor,
+                                  size: 16,
+                                ),
                               ),
                             ),
                           ),

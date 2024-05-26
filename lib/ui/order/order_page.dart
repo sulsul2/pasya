@@ -95,18 +95,6 @@ class _OrderPageState extends State<OrderPage> {
                 const OrderCard(
                   tipe: 1,
                 ),
-                const SizedBox(
-                  height: 8,
-                ),
-                const OrderCard(
-                  tipe: 1,
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                const OrderCard(
-                  tipe: 2,
-                ),
               ],
             ),
           ],

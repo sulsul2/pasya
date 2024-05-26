@@ -27,75 +27,30 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     List<ChatModel> chats = [
       ChatModel(
-        username: 'John Bae',
-        lastMessage: 'Hello, how are you?',
+        username: 'Pedagang Ayam',
+        lastMessage: 'Ayamnya udah diterima?',
         lastTime: DateTime.now(),
         imageUrl:
             'https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?q=80&w=1966&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         countUnread: 12,
       ),
       ChatModel(
-        username: 'Jane Smith',
-        lastMessage: 'I am fine, thank you!',
+        username: 'Pedangang Lemon',
+        lastMessage: 'Halo produk ini diskon!',
         lastTime: DateTime.now().add(const Duration(hours: 1)),
         imageUrl:
             'https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?q=80&w=1966&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         countUnread: 2,
       ),
       ChatModel(
-        username: 'John Doe',
+        username: 'Pedagang Makassar',
         lastMessage:
-            'Lets go for a walk around Gasibus Station! Is it okay? I am fine, thank you! I am fine, thank you!',
+            'Halo selamat datang!',
         lastTime: DateTime.now().add(const Duration(days: 1)),
         imageUrl:
             'https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?q=80&w=1966&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         countUnread: 0,
-      ),
-      ChatModel(
-        username: 'John Doe',
-        lastMessage:
-            'Lets go for a walk around Gasibus Station! Is it okay? I am fine, thank you! I am fine, thank you!',
-        lastTime: DateTime.now().add(const Duration(days: 1)),
-        imageUrl:
-            'https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?q=80&w=1966&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        countUnread: 0,
-      ),
-      ChatModel(
-        username: 'John Doe',
-        lastMessage:
-            'Lets go for a walk around Gasibus Station! Is it okay? I am fine, thank you! I am fine, thank you!',
-        lastTime: DateTime.now().add(const Duration(days: 1)),
-        imageUrl:
-            'https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?q=80&w=1966&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        countUnread: 0,
-      ),
-      ChatModel(
-        username: 'John Doe',
-        lastMessage:
-            'Lets go for a walk around Gasibus Station! Is it okay? I am fine, thank you! I am fine, thank you!',
-        lastTime: DateTime.now().add(const Duration(days: 1)),
-        imageUrl:
-            'https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?q=80&w=1966&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        countUnread: 0,
-      ),
-      ChatModel(
-        username: 'John Doe',
-        lastMessage:
-            'Lets go for a walk around Gasibus Station! Is it okay? I am fine, thank you! I am fine, thank you!',
-        lastTime: DateTime.now().add(const Duration(days: 1)),
-        imageUrl:
-            'https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?q=80&w=1966&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        countUnread: 0,
-      ),
-      ChatModel(
-        username: 'John Doe',
-        lastMessage:
-            'Lets go for a walk around Gasibus Station! Is it okay? I am fine, thank you! I am fine, thank you!',
-        lastTime: DateTime.now().add(const Duration(days: 1)),
-        imageUrl:
-            'https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?q=80&w=1966&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        countUnread: 0,
-      ),
+      )
     ];
 
     Widget chatList() {

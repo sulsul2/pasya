@@ -6,6 +6,8 @@ import 'package:pasya/ui/checkout/checkout_page.dart';
 import 'package:pasya/ui/widgets/header.dart';
 import 'package:provider/provider.dart';
 
+import '../../providers/currency_format.dart';
+
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
 
@@ -86,7 +88,7 @@ class CartPage extends StatelessWidget {
                               fontSize: 16, fontWeight: semibold),
                         ),
                         Text(
-                          'Rp 80.000',
+                          CurrencyFormat.convertToIdr(cartProvider.totalPrice, 2),
                           style: whiteText.copyWith(
                               fontSize: 24, fontWeight: bold),
                         )

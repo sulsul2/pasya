@@ -6,11 +6,11 @@ class CartProvider extends ChangeNotifier {
     const CartModel(
       id: 1,
       photoUrl: 'assets/ayam_mentah.png',
-      name: 'Product A',
-      price: 20000,
+      name: 'Ayam 1/2 Kg',
+      price: 10000,
       count: 2,
       tipe: 1,
-      status: false,
+      status: true,
     )
   ];
 
@@ -40,5 +40,25 @@ class CartProvider extends ChangeNotifier {
     _cartList.removeAt(index);
     _cartList.insert(index, temp2);
     notifyListeners();
+  }
+  void chageCount(int id, bool isAdd) {
+    CartModel temp = _cartList.firstWhere((element) => element.id == id);
+    int index = _cartList.indexOf(temp);
+    CartModel updatedCartModel = CartModel(
+        id: temp.id,
+        photoUrl: temp.photoUrl,
+        name: temp.name,
+        price: temp.price,
+        count:  isAdd? temp.count+1 :
+                (temp.count > 1 ? temp.count-1:temp.count), // Increase the count
+        tipe: temp.tipe,
+        status: temp.status);
+    _cartList[index] = updatedCartModel;
+    notifyListeners();
+  }
+  double get totalPrice {
+    return _cartList
+        .where((cartItem) => cartItem.status == true)
+        .fold(0, (previousValue, cartItem) => previousValue + (cartItem.price * cartItem.count));
   }
 }

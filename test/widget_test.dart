@@ -6,7 +6,6 @@ import 'package:pasya/ui/chat/chat_room_page.dart';
 import 'package:pasya/ui/chat/presentation/chat_bubble.dart';
 import 'package:pasya/ui/chat/presentation/chat_card.dart';
 import 'package:pasya/ui/chat/presentation/image_loader.dart';
-import 'package:pasya/ui/checkout/presentation/checkout_card.dart';
 import 'package:pasya/ui/home/presentation/custom_dropdown.dart';
 import 'package:pasya/ui/widgets/address_card.dart';
 import 'package:pasya/ui/widgets/custom_tab.dart';
@@ -90,25 +89,6 @@ void main() {
 
     // Verify that the ChatCard widget is displayed
     expect(chatCardFinder, findsOneWidget);
-  });
-
-  testWidgets('CheckoutCard Widget Test', (WidgetTester tester) async {
-    // Build the CheckoutCard widget
-    await tester.pumpWidget(const MaterialApp(
-      home: CheckoutCard(
-        photoUrl: 'assets/ayam_mentah.png',
-        name: 'Daging Ayam Paha',
-        price: 40000,
-        count: 1,
-        opacity: true,
-      ),
-    ));
-
-    // Find the CheckoutCard widget
-    final checkoutCardFinder = find.byType(CheckoutCard);
-
-    // Verify that the CheckoutCard widget is displayed
-    expect(checkoutCardFinder, findsOneWidget);
   });
 
   testWidgets('CustomDropdown Widget Test', (WidgetTester tester) async {

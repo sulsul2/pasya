@@ -4,9 +4,22 @@ import 'package:pasya/ui/widgets/form_input.dart';
 import 'package:pasya/ui/widgets/header.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+import 'data/get_profile.dart';
+class ProfilePage extends StatefulWidget {
+  const ProfilePage({Key? key}) : super(key: key);
 
+  @override
+  _ProfilePageState createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends  State<ProfilePage>  {
+  Future<Map<String, dynamic>>? _futureUserData;
+
+  @override
+  void initState() {
+    super.initState();
+    _futureUserData = fetchUserData();
+  }
   @override
   Widget build(BuildContext context) {
     TextEditingController nameController = TextEditingController();
@@ -14,7 +27,13 @@ class ProfilePage extends StatelessWidget {
     TextEditingController phoneController = TextEditingController();
     TextEditingController addressController = TextEditingController();
 
-    Widget content() {
+    Widget content(Map<String, dynamic> userData) {
+
+      nameController.text = userData['name'];
+      emailController.text = userData['email'];
+      phoneController.text = userData['phoneNumber'] ?? '';
+      addressController.text = userData['address'] ?? '';
+      print(userData);
       return Container(
         margin: const EdgeInsets.only(top: 100),
         padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
@@ -33,9 +52,8 @@ class ProfilePage extends StatelessWidget {
                 ),
                 FormInput(
                   textController: nameController,
-                  hintText: 'hintText',
+                  hintText: 'No Name is Set',
                   label: 'Nama',
-                  defaultValue: 'Agil Fuad Gumelar',
                   status: false,
                   suffix: true,
                 ),
@@ -44,9 +62,9 @@ class ProfilePage extends StatelessWidget {
                 ),
                 FormInput(
                   textController: emailController,
-                  hintText: 'hintText',
+                  hintText: 'No email is set',
                   label: 'Email',
-                  defaultValue: 'admin@admin.com',
+
                   status: false,
                   suffix: true,
                 ),
@@ -55,9 +73,9 @@ class ProfilePage extends StatelessWidget {
                 ),
                 FormInput(
                   textController: phoneController,
-                  hintText: 'hintText',
+                  hintText: 'No Phone Number set',
                   label: 'Nomor HP',
-                  defaultValue: '+62 81231122121',
+
                   status: false,
                   suffix: true,
                 ),
@@ -66,10 +84,8 @@ class ProfilePage extends StatelessWidget {
                 ),
                 FormInput(
                   textController: addressController,
-                  hintText: 'hintText',
+                  hintText: 'No Alamat is set',
                   label: 'Alamat',
-                  defaultValue:
-                      'Jalan Sekeloa, Gang Kubangsari III, Coblong, Bandung',
                   status: false,
                   suffix: true,
                 ),
@@ -124,13 +140,34 @@ class ProfilePage extends StatelessWidget {
       );
     }
 
-    return Scaffold(
-      body: Stack(
-        children: [
-          const Header(text: 'Profile'),
-          content(),
-        ],
-      ),
+    return FutureBuilder<Map<String, dynamic>>(
+      future: _futureUserData,
+      builder: (BuildContext context, AsyncSnapshot<Map<String, dynamic>> snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return CircularProgressIndicator();
+        } else if (snapshot.hasError) {
+          return Text('Error: ${snapshot.error}');
+        } else if (snapshot.hasData) {
+          return Scaffold(
+            body: Stack(
+              children: [
+                const Header(text: 'Profile'),
+                content(snapshot.data!), // Pass snapshot.data to content function
+              ],
+            ),
+          );
+        } else {
+          // If snapshot is null, re-run the Future and rebuild the widget
+          WidgetsBinding.instance?.addPostFrameCallback((_) {
+            setState(() {
+              _futureUserData = fetchUserData();
+            });
+          });
+          return Text('No data available');
+        }
+      },
     );
+
+
   }
 }

@@ -51,11 +51,11 @@ class OrderCard extends StatelessWidget {
                     style: blackText.copyWith(fontWeight: bold, fontSize: 16),
                   ),
                   Text(
-                    '1 Kg',
+                    '0.5 Kg',
                     style: blackText.copyWith(fontWeight: regular),
                   ),
                   Text(
-                    'Rp 40.000',
+                    'Rp 10.000',
                     style: blueText.copyWith(fontWeight: bold, fontSize: 16),
                   ),
                 ],

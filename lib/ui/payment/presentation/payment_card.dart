@@ -5,13 +5,13 @@ class PaymentCard extends StatelessWidget {
   const PaymentCard(
       {super.key,
       required this.name,
-      required this.isSaldo,
-      required this.saldo,
+        this.isSaldo = false,
+      // required this.saldo,
       required this.isCheck});
 
   final String name;
   final bool isSaldo;
-  final String saldo;
+  // final String saldo;
   final bool isCheck;
 
   @override
@@ -59,15 +59,15 @@ class PaymentCard extends StatelessWidget {
                   )
                 ],
               ),
-              if (isSaldo)
-                const SizedBox(
-                  height: 8,
-                ),
-              if (isSaldo)
-                Text(
-                  'Saldo : Rp $saldo',
-                  style: blackText,
-                )
+              // if (isSaldo)
+              //   const SizedBox(
+              //     height: 8,
+              //   ),
+              // if (isSaldo)
+                // Text(
+                //   'Saldo : Rp $saldo',
+                //   style: blackText,
+                // )
             ],
           ),
           Container(
