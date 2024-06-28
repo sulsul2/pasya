@@ -8,7 +8,8 @@ import 'package:pasya/ui/payment/presentation/payment_card.dart';
 import '../qrCode/qr_page.dart';
 
 class PaymentPage extends StatefulWidget {
-  const PaymentPage({super.key});
+  final int price;
+  const PaymentPage({super.key, required this.price});
 
   @override
   State<PaymentPage> createState() => _PaymentPageState();
@@ -16,12 +17,14 @@ class PaymentPage extends StatefulWidget {
 
 class _PaymentPageState extends State<PaymentPage>  {
   int selected = 0;
-  int price = 10000;
   late String priceString;
 
-  _PaymentPageState() {
-    priceString = CurrencyFormat.convertToIdr(price, 2);
+  @override
+  void initState() {
+    super.initState();
+    priceString = CurrencyFormat.convertToIdr(widget.price, 2);
   }
+
   @override
   Widget build(BuildContext context) {
     Widget content() {
@@ -38,7 +41,7 @@ class _PaymentPageState extends State<PaymentPage>  {
             const SizedBox(
               height: 8,
             ),
-            const ConditionTab(parameter: 'Harga Barang', value: '10.000'),
+             ConditionTab(parameter: 'Harga Barang', value: priceString),
             const SizedBox(
               height: 8,
             ),
@@ -136,7 +139,7 @@ class _PaymentPageState extends State<PaymentPage>  {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => QRCodePage(price: CurrencyFormat.convertToIdr(price,2))),
+                      MaterialPageRoute(builder: (context) => QRCodePage(price: widget.price))
                     );
                   },
                   style: TextButton.styleFrom(

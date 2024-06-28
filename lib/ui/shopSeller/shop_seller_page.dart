@@ -4,6 +4,8 @@ import 'package:pasya/ui/productSeller/product_seller_page.dart';
 import 'package:pasya/ui/widgets/header.dart';
 import 'package:pasya/ui/widgets/market_card.dart';
 
+import '../chat/presentation/image_loader.dart';
+
 class ShopSellerPage extends StatelessWidget {
   const ShopSellerPage({super.key});
 
@@ -34,7 +36,7 @@ class ShopSellerPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) => const ProductSellerPage()),
-                ),
+                ), imageLoader: AssetImageLoaderPasar()
               );
             },
           ),

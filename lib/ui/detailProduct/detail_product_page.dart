@@ -8,6 +8,8 @@ import 'package:pasya/ui/widgets/header.dart';
 import 'package:pasya/ui/detailProduct/presentation/review_card.dart';
 import 'package:pasya/ui/widgets/market_card.dart';
 
+import '../chat/presentation/image_loader.dart';
+
 class DetailProductPage extends StatefulWidget {
   const DetailProductPage({super.key});
 
@@ -413,7 +415,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => const DetailProductPage()),
-                      ),
+                      ), imageLoader: AssetImageLoader(),
                     );
                   },
                 ),

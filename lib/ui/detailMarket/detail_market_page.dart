@@ -8,6 +8,8 @@ import 'package:pasya/ui/widgets/header.dart';
 import 'package:pasya/ui/widgets/market_card.dart';
 import 'package:provider/provider.dart';
 
+import '../chat/presentation/image_loader.dart';
+
 class DetailMarketPage extends StatefulWidget {
   const DetailMarketPage({super.key, required this.idMarket});
 
@@ -39,7 +41,7 @@ class _DetailMarketPageState extends State<DetailMarketPage> {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: FormInput(
                 textController: searchController,
-                hintText: 'Cari toko',
+                hintText: 'Cari Barang',
                 label: 'Toko',
                 isSearch: true,
               ),
@@ -106,7 +108,7 @@ class _DetailMarketPageState extends State<DetailMarketPage> {
                             builder: (context) => DetailShopPage(
                                   id: shop.id,
                                 )),
-                      ),
+                      ), imageLoader: AssetImageLoader(),
                     );
                   },
                 ),

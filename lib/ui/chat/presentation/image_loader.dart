@@ -17,3 +17,9 @@ class AssetImageLoader implements ImageLoader {
     return const AssetImage('assets/pasya_logo.png');
   }
 }
+class AssetImageLoaderPasar implements ImageLoader {
+  @override
+  ImageProvider load(String url) {
+    return const AssetImage('assets/pasar_ex.png');
+  }
+}

@@ -8,6 +8,8 @@ import 'package:pasya/ui/detailProduct/detail_product_page.dart';
 import 'package:pasya/ui/widgets/header.dart';
 import 'package:pasya/ui/widgets/market_card.dart';
 import 'package:provider/provider.dart';
+
+import '../chat/presentation/image_loader.dart';
 // import 'package:scroll_page_view/pager/page_controller.dart';
 // import 'package:scroll_page_view/pager/scroll_page_view.dart';
 
@@ -80,7 +82,7 @@ class _DetailShopPageState extends State<DetailShopPage> {
                     MaterialPageRoute(
                       builder: (context) => const DetailProductPage(),
                     ),
-                  ),
+                  ), imageLoader: AssetImageLoader(),
                 );
               },
             ),

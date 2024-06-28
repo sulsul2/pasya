@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:pasya/providers/login_provider.dart';
 
@@ -36,4 +37,16 @@ Future<Map<String, dynamic>> fetchUserData() async {
     // If the server did not return a 200 OK response, throw an exception.
     throw Exception('Failed to load user data');
   }
+}
+Future<void> uploadImage() async {
+  final storageRef = FirebaseStorage.instance.ref();
+  // Create a reference to "mountains.jpg"
+  final mountainsRef = storageRef.child("mountains.jpg");
+
+  // Create a reference to 'images/mountains.jpg'
+  final mountainImagesRef = storageRef.child("images/mountains.jpg");
+  
+  // While the file names are the same, the references point to different files
+  assert(mountainsRef.name == mountainImagesRef.name);
+  assert(mountainsRef.fullPath != mountainImagesRef.fullPath);
 }

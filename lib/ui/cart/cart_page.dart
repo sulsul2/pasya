@@ -98,7 +98,7 @@ class CartPage extends StatelessWidget {
                         onPressed: () => Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const CheckoutPage()),
+                                  builder: (context) => CheckoutPage(price:cartProvider.totalPrice)),
                             ),
                         style: TextButton.styleFrom(
                           backgroundColor: yellowColor,

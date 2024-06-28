@@ -4,6 +4,8 @@ import 'package:pasya/ui/detailMarket/detail_market_page.dart';
 import 'package:pasya/ui/widgets/header.dart';
 import 'package:pasya/ui/widgets/market_card.dart';
 
+import '../chat/presentation/image_loader.dart';
+
 class ProductSellerPage extends StatelessWidget {
   const ProductSellerPage({super.key});
 
@@ -36,7 +38,7 @@ class ProductSellerPage extends StatelessWidget {
                       builder: (context) => const DetailMarketPage(
                             idMarket: 2,
                           )),
-                ),
+                ), imageLoader: AssetImageLoader(),
               );
             },
           ),

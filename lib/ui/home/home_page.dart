@@ -9,6 +9,8 @@ import 'package:pasya/ui/widgets/header.dart';
 import 'package:pasya/ui/widgets/market_card.dart';
 import 'package:provider/provider.dart';
 
+import '../chat/presentation/image_loader.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -47,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         FormInput(
                           textController: searchController,
-                          hintText: 'Cari toko',
+                          hintText: 'Cari Barang',
                           label: 'Toko',
                           isSearch: true,
                         ),
@@ -105,7 +107,7 @@ class _HomePageState extends State<HomePage> {
                                 builder: (context) => DetailMarketPage(
                                       idMarket: market.id,
                                     )),
-                          ),
+                          ), imageLoader: AssetImageLoaderPasar(),
                         ),
                       );
                     }),
@@ -165,7 +167,7 @@ class _HomePageState extends State<HomePage> {
                             builder: (context) => const DetailMarketPage(
                                   idMarket: 2,
                                 )),
-                      ),
+                      ), imageLoader: AssetImageLoaderPasar(),
                     ),
                     const SizedBox(
                       width: 8,
@@ -182,7 +184,7 @@ class _HomePageState extends State<HomePage> {
                             builder: (context) => const DetailMarketPage(
                                   idMarket: 2,
                                 )),
-                      ),
+                      ), imageLoader: AssetImageLoaderPasar(),
                     ),
                     const SizedBox(
                       width: 8,
@@ -199,7 +201,7 @@ class _HomePageState extends State<HomePage> {
                             builder: (context) => const DetailMarketPage(
                                   idMarket: 2,
                                 )),
-                      ),
+                      ), imageLoader: AssetImageLoaderPasar(),
                     ),
                     const SizedBox(
                       width: 8,
@@ -216,7 +218,7 @@ class _HomePageState extends State<HomePage> {
                             builder: (context) => const DetailMarketPage(
                                   idMarket: 2,
                                 )),
-                      ),
+                      ), imageLoader: AssetImageLoaderPasar(),
                     ),
                     const SizedBox(
                       width: 20,
@@ -274,7 +276,7 @@ class _HomePageState extends State<HomePage> {
                             builder: (context) => const DetailMarketPage(
                                   idMarket: 2,
                                 )),
-                      ),
+                      ), imageLoader: AssetImageLoaderPasar(),
                     ),
                     const SizedBox(
                       width: 8,
@@ -291,7 +293,7 @@ class _HomePageState extends State<HomePage> {
                             builder: (context) => const DetailMarketPage(
                                   idMarket: 2,
                                 )),
-                      ),
+                      ), imageLoader: AssetImageLoaderPasar(),
                     ),
                     const SizedBox(
                       width: 8,
@@ -308,7 +310,7 @@ class _HomePageState extends State<HomePage> {
                             builder: (context) => const DetailMarketPage(
                                   idMarket: 2,
                                 )),
-                      ),
+                      ), imageLoader: AssetImageLoaderPasar(),
                     ),
                     const SizedBox(
                       width: 8,
@@ -325,7 +327,7 @@ class _HomePageState extends State<HomePage> {
                             builder: (context) => const DetailMarketPage(
                                   idMarket: 2,
                                 )),
-                      ),
+                      ), imageLoader: AssetImageLoaderPasar(),
                     ),
                     const SizedBox(
                       width: 20,

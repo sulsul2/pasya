@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 import 'package:pasya/providers/page_provider.dart';
 import 'package:pasya/theme.dart';
 import 'package:pasya/ui/home/home_page.dart';
+import 'package:firebase_core/firebase_core.dart';
+import '../firebase_options.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});

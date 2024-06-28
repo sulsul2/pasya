@@ -11,7 +11,9 @@ import 'data/checkout_model.dart';
 import 'presentation/card_by_market.dart';
 
 class CheckoutPage extends StatefulWidget {
-  const CheckoutPage({super.key});
+  final int price;
+
+  const CheckoutPage({super.key, required this.price});
 
   @override
   State<CheckoutPage> createState() => _CheckoutPageState();
@@ -23,6 +25,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
   late String hargabarang;
   late List<CardByMarket> cardByMarketList;
+
+
 
   @override
   void initState() {
@@ -235,7 +239,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   ),
                   ConditionTab(
                     parameter: 'Harga Barang',
-                    value: hargabarang,
+                    value: CurrencyFormat.convertToIdr(widget.price, 2),
                   ),
                   const SizedBox(
                     height: 8,
@@ -264,7 +268,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                 fontSize: 16, fontWeight: semibold),
                           ),
                           Text(
-                            hargabarang,
+                            CurrencyFormat.convertToIdr(widget.price, 2),
                             style: blackText.copyWith(
                                 fontSize: 24, fontWeight: bold),
                           )
@@ -274,7 +278,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                         onPressed: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const PaymentPage(),
+                            builder: (context) => PaymentPage(price: widget.price),
                           ),
                         ),
                         style: TextButton.styleFrom(

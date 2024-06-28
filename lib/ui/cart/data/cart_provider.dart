@@ -56,7 +56,7 @@ class CartProvider extends ChangeNotifier {
     _cartList[index] = updatedCartModel;
     notifyListeners();
   }
-  double get totalPrice {
+  int get totalPrice {
     return _cartList
         .where((cartItem) => cartItem.status == true)
         .fold(0, (previousValue, cartItem) => previousValue + (cartItem.price * cartItem.count));

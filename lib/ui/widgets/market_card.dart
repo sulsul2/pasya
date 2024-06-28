@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pasya/theme.dart';
 
+import '../chat/presentation/image_loader.dart';
+
 class MarketCard extends StatelessWidget {
   const MarketCard(
       {super.key,
@@ -8,13 +10,14 @@ class MarketCard extends StatelessWidget {
         required this.height,
         required this.name,
         required this.photoUrl,
-        required this.onPressed});
+        required this.onPressed, required this.imageLoader});
 
   final double width;
   final double height;
   final String name;
   final String photoUrl;
   final VoidCallback onPressed;
+  final ImageLoader imageLoader;
 
   @override
   Widget build(BuildContext context) {
@@ -42,8 +45,8 @@ class MarketCard extends StatelessWidget {
               BoxDecoration(borderRadius: BorderRadius.circular(16)),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16),
-                child: Image.network(
-                  photoUrl,
+                child: Image(
+                  image: imageLoader.load(photoUrl),
                   fit: BoxFit.cover,
                 ),
               ),

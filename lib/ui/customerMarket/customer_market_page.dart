@@ -9,6 +9,8 @@ import 'package:pasya/ui/widgets/header.dart';
 import 'package:pasya/ui/widgets/market_card.dart';
 import 'package:provider/provider.dart';
 
+import '../chat/presentation/image_loader.dart';
+
 class CustomerMarketPage extends StatefulWidget {
   const CustomerMarketPage({super.key, required this.title});
 
@@ -147,7 +149,7 @@ class _CustomerMarketPageState extends State<CustomerMarketPage> {
                             builder: (context) => DetailMarketPage(
                                   idMarket: market.id,
                                 )),
-                      ),
+                      ), imageLoader: AssetImageLoader(),
                     );
                   },
                 ),

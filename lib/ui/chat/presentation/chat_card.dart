@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:pasya/theme.dart';
 
 
+import '../chat_model_class.dart';
 import '../chat_page.dart';
 import '../chat_room_page.dart';
 import 'image_loader.dart';
@@ -35,7 +36,7 @@ class ChatCard extends StatelessWidget {
         child: Row(
           children: [
             CircleAvatar(
-              backgroundImage: imageLoader.load(chat.imageUrl),
+              backgroundImage: imageLoader.load(chat.createdBy!.picture!),
               backgroundColor: greyColor,
               maxRadius: 36,
               minRadius: 36,
@@ -46,7 +47,7 @@ class ChatCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    chat.username,
+                    chat.createdBy!.name!,
                     style: blackText.copyWith(
                       fontSize: 16,
                       fontWeight: semibold,
@@ -56,7 +57,7 @@ class ChatCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    chat.lastMessage,
+                    chat.message!,
                     style: blackText.copyWith(
                       fontSize: 12,
                     ),
@@ -71,20 +72,20 @@ class ChatCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  DateFormat('dd-MMM').format(chat.lastTime),
+                  DateFormat('dd-MMM').format(chat!.updatedAt!),
                   style: blueText.copyWith(
                     fontWeight: semibold,
                   ),
                 ),
                 const SizedBox(height: 4),
                 Visibility(
-                  visible: chat.countUnread > 0,
+                  visible: chat.id! > 0,
                   child: CircleAvatar(
                     minRadius: 16,
                     maxRadius: 16,
                     backgroundColor: yellowColor,
                     child: Text(
-                      chat.countUnread.toString(),
+                      chat.id.toString(),
                       style: blueText.copyWith(
                         fontWeight: medium,
                         fontSize: 12,
